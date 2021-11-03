@@ -1,0 +1,52 @@
+{
+    "name": "getonecms/user",
+    "description": "OneCMS user module",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Mohammed Shifreen",
+            "email": "mshifreen@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.4",
+        "getonecms/base": "dev-master",
+        "getonecms/admin": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "OneCMS\\User\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OneCMS\\User\\Test\\": "test/"
+        }
+    },
+    "optimize-autoloader": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../base",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../admin",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
