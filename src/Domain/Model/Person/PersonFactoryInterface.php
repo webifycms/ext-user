@@ -14,14 +14,14 @@ namespace OneCMS\User\Domain\Model\Person;
 interface PersonFactoryInterface
 {
     /**
-     * @param PersonRequestInterface $request
+     * @param mixed $request
      * @return Person
      */
-    public function build(PersonRequestInterface $request): Person;
+    public function build($request): Person;
 
-    /**
-     * @param $state
-     * @return Person
-     */
-    public function buildFromState($state): Person;
+//    /**
+//     * @param mixed $state
+//     * @return Person
+//     */
+//    public function buildFromState($state): Person;
 }

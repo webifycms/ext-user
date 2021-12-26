@@ -30,18 +30,19 @@ final class CreatePersonAction
         CreatePersonRequest    $request,
         PersonFactoryInterface $factory,
         PersonRepository       $repository
-    )
-    {
+    ) {
         $this->request = $request;
         $this->factory = $factory;
         $this->repository = $repository;
     }
 
     /**
-     * Execute the creation action.
+     * Execute the action.
      */
     public function execute()
     {
         $entity = $this->factory->build($this->request);
+
+        $this->repository->persist($entity);
     }
 }

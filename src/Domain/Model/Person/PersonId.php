@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\ValueObject;
+namespace OneCMS\User\Domain\Model\Person;
 
 use OneCMS\Base\Domain\Service\IdentityServiceInterface;
 
@@ -15,7 +15,6 @@ use OneCMS\Base\Domain\Service\IdentityServiceInterface;
  */
 final class PersonId
 {
-    
     /**
      * @var string
      */
@@ -34,7 +33,7 @@ final class PersonId
     /**
      * @return string
      */
-    public function value(): string
+    public function getValue(): string
     {
         return $this->value;
     }

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\ValueObject;
+namespace OneCMS\User\Domain\Model\Account;
 
-use OneCMS\Base\Domain\Service\IdenitityServiceInterface;
+use OneCMS\Base\Domain\Service\IdentityServiceInterface;
 
 /**
  * Class AccountId
@@ -19,21 +19,19 @@ final class AccountId
      * @var string
      */
     private string $value;
-
+    
     /**
      * AccountId constructor.
      *
-     * @param IdenitityServiceInterface $identity
+     * @param IdentityServiceInterface $identityService
      */
-    public function __construct(IdenitityServiceInterface $identity)
+    public function __construct(IdentityServiceInterface $identityService)
     {
-        $this->value = (string) $identity->getId();
+        $this->value = (string) $identityService->getId();
     }
-
+    
     /**
-     * Get the value of value
-     *
-     * @return  string
+     * @return string
      */
     public function getValue(): string
     {

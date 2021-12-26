@@ -24,25 +24,25 @@ interface PersonRepositoryInterface
     /**
      * Trash user.
      *
-     * @param Person $person
+     * @param PersonId $personId
      * @return mixed
      */
-    public function trash(Person $person);
+    public function trash(PersonId $personId);
 
     /**
      * Restore user from trash.
      *
-     * @param Person $person
+     * @param PersonId $personId
      * @return void
      */
-    public function restore(Person $person);
+    public function restore(PersonId $personId);
 
     /**
      * Delete user.
      * Note: This will permanently delete the user.
      *
-     * @param Person $person
+     * @param PersonId $personId
      * @return void
      */
-    public function delete(Person $person);
+    public function delete(PersonId $personId);
 }

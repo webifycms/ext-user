@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace OneCMS\User;
 
-
 use OneCMS\Base\Infrastructure\Framework\Bootstrap\AbstractBootstrap;
 use OneCMS\Base\Infrastructure\Framework\Web\Application\WebApplicationInterface;
 use OneCMS\User\Infrastructure\Framework\Module;

@@ -3,13 +3,10 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person;
 
-use OneCMS\Base\Domain\Behaviour\Blockable\BlockableBehaviour;
-use OneCMS\Base\Domain\Behaviour\Blockable\BlockableBehaviourInterface;
 use OneCMS\Base\Domain\Behaviour\Recyclable\RecyclableBehaviour;
-use OneCMS\Base\Domain\Behaviour\Recyclable\RecyclableBehaviourInterface;
+use OneCMS\Base\Domain\Behaviour\Recyclable\RecyclableInterface;
 use OneCMS\Base\Domain\ValueObject\Timestamp;
 use OneCMS\Base\Domain\ValueObject\Uuid;
-use OneCMS\User\Domain\ValueObject\PersonId;
 
 /**
  * Class Person
@@ -19,15 +16,14 @@ use OneCMS\User\Domain\ValueObject\PersonId;
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-final class Person implements BlockableBehaviourInterface, RecyclableBehaviourInterface
+final class Person implements RecyclableInterface
 {
-    use BlockableBehaviour;
     use RecyclableBehaviour;
 
     /**
      * @var PersonId
      */
-    private PersonId $personId;
+    private PersonId $id;
     /**
      * @var Uuid
      */
@@ -46,23 +42,22 @@ final class Person implements BlockableBehaviourInterface, RecyclableBehaviourIn
     private Timestamp $timestamp;
 
     /**
-     * Person constructor.
+     * Person entity object constructor.
      *
-     * @param PersonId $personId
+     * @param PersonId $id
      * @param Uuid $uuid
      * @param string $firstName
      * @param string $lastName
      * @param Timestamp $timestamp
      */
     public function __construct(
-        PersonId  $personId,
+        PersonId  $id,
         Uuid      $uuid,
         string    $firstName,
         string    $lastName,
         Timestamp $timestamp
-    )
-    {
-        $this->personId = $personId;
+    ) {
+        $this->id = $id;
         $this->uuid = $uuid;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -70,23 +65,23 @@ final class Person implements BlockableBehaviourInterface, RecyclableBehaviourIn
     }
 
     /**
-     * Returns the user personId as PersonId object.
+     * Get the value of id.
      *
-     * @return PersonId
+     * @return string
      */
-    public function getPersonId(): PersonId
+    public function getPersonId(): string
     {
-        return $this->personId;
+        return $this->id->getValue();
     }
 
     /**
-     * Returns the user uuid as UserUuid object.
+     * Get the value of uuid.
      *
-     * @return Uuid
+     * @return string
      */
-    public function getUuid(): Uuid
+    public function getUuid(): string
     {
-        return $this->uuid;
+        return $this->uuid->getValue();
     }
 
     /**

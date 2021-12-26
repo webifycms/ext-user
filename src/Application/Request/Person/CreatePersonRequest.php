@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Application\Request\Person;
 
-use OneCMS\User\Domain\Model\Person\PersonRequestInterface;
-
 /**
  * Class RequestPersonCreate
  *
@@ -13,7 +11,7 @@ use OneCMS\User\Domain\Model\Person\PersonRequestInterface;
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-final class CreatePersonRequest implements PersonRequestInterface
+final class CreatePersonRequest
 {
     /**
      * @var string

@@ -12,8 +12,8 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.4",
-        "getonecms/base": "dev-master",
-        "getonecms/admin": "dev-master"
+        "getonecms/base-module": "dev-master",
+        "getonecms/admin-module": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
@@ -32,17 +32,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../base",
-            "options": {
-                "symlink": true
-            }
-        },
-        {
-            "type": "path",
-            "url": "../admin",
-            "options": {
-                "symlink": true
-            }
+            "url": "../*"
         },
         {
             "type": "composer",
