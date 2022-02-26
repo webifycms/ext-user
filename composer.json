@@ -1,7 +1,7 @@
 {
     "name": "getonecms/user",
     "description": "OneCMS user extension",
-    "type": "onecms-ext",
+    "type": "onecms-extension",
     "authors": [
         {
             "name": "Mohammed Shifreen",
@@ -11,7 +11,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "yiisoft/yii2": "~2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
