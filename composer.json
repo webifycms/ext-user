@@ -1,5 +1,5 @@
 {
-    "name": "getonecms/user",
+    "name": "getonecms/ext-user",
     "description": "OneCMS user extension",
     "type": "onecms-extension",
     "authors": [
