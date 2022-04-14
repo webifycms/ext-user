@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OneCMS\User;
 
-use OneCMS\Base\Infrastructure\Service\Application\ConsoleApplicationServiceInterface;
 use OneCMS\Base\Infrastructure\Service\Bootstrap\ConsoleBootstrapService;
 use OneCMS\Base\Infrastructure\Service\Bootstrap\RegisterControllersBootstrapInterface;
 
@@ -21,9 +20,8 @@ class ConsoleBootstrap extends ConsoleBootstrapService implements RegisterContro
     /**
      * @inheritDoc
      */
-    public function init(ConsoleApplicationServiceInterface $app): void
+    public function init(): void
     {
-        parent::init($app);
         set_alias('@User', dirname(__DIR__, 4));
     }
 
