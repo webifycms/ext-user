@@ -1,26 +1,27 @@
 <?php
+
 declare(strict_types=1);
 
-namespace OneCMS\User\Infrastructure\Framework\Console;
+namespace OneCMS\User;
 
-use OneCMS\Base\Infrastructure\Framework\Console\Application\ConsoleApplicationInterface;
-use OneCMS\Base\Infrastructure\Framework\Bootstrap\RegisterControllersBootstrapInterface;
-use OneCMS\Base\Infrastructure\Framework\Console\Bootstrap\ConsoleAbstractBootstrap;
+use OneCMS\Base\Infrastructure\Service\Application\ConsoleApplicationServiceInterface;
+use OneCMS\Base\Infrastructure\Service\Bootstrap\ConsoleBootstrapService;
+use OneCMS\Base\Infrastructure\Service\Bootstrap\RegisterControllersBootstrapInterface;
 
 /**
- * Class Bootstrap
+ * ConsoleBootstrap
  *
- * @package getonecms/user
+ * @package getonecms/ext-user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-class Bootstrap extends ConsoleAbstractBootstrap implements RegisterControllersBootstrapInterface
+class ConsoleBootstrap extends ConsoleBootstrapService implements RegisterControllersBootstrapInterface
 {
     /**
      * @inheritDoc
      */
-    public function init(ConsoleApplicationInterface $app): void
+    public function init(ConsoleApplicationServiceInterface $app): void
     {
         parent::init($app);
         set_alias('@User', dirname(__DIR__, 4));
@@ -34,7 +35,7 @@ class Bootstrap extends ConsoleAbstractBootstrap implements RegisterControllersB
         return [
             'migrate-user' => [
                 'class' => 'yii\console\controllers\MigrateController',
-                'migrationPath' => '@User/src/Infrastructure/Framework/Console/Migration', //null,
+                'migrationPath' => '@User/src/Infrastructure/Console/Migration', //null,
                 'migrationTable' => 'migration_user',
                 // 'migrationNamespaces' => [
                 //     'OneCMS\User\Infrastructure\Framework\Console\Migration'

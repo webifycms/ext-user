@@ -1,6 +1,6 @@
 <?php
 
-namespace OneCMS\User\Infrastructure\Framework;
+namespace OneCMS\User\Infrastructure;
 
 use yii\base\Module as BaseModule;
 

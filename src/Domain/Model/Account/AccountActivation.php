@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace OneCMS\User\Domain\Model\Account;
 
 use DateTimeInterface;
-use OneCMS\Base\Domain\ValueObject\DateTime;
+use OneCMS\Base\Domain\ValueObject\DateTimeValueObject;
 
 /**
- * Undocumented class
+ * AccountActivation
  */
 final class AccountActivation
 {
@@ -73,6 +73,6 @@ final class AccountActivation
      */
     public function activate(): void
     {
-        $this->activatedAt = new DateTime();
+        $this->activatedAt = (new DateTimeValueObject())->getDateTime();
     }
 }

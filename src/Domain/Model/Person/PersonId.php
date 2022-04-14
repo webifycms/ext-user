@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person;
 
-use OneCMS\Base\Domain\Service\IdentityServiceInterface;
+use OneCMS\Base\Domain\Service\Identity\IdentityServiceInterface;
 
 /**
  * Class PersonId
  *
- * @package getonecms/user
+ * @package getonecms/ext-user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen
@@ -19,7 +19,7 @@ final class PersonId
      * @var string
      */
     private string $value;
-    
+
     /**
      * PersonId constructor.
      *

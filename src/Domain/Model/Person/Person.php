@@ -1,33 +1,30 @@
 <?php
+
 declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person;
 
-use OneCMS\Base\Domain\Behaviour\Recyclable\RecyclableBehaviour;
-use OneCMS\Base\Domain\Behaviour\Recyclable\RecyclableInterface;
-use OneCMS\Base\Domain\ValueObject\Timestamp;
-use OneCMS\Base\Domain\ValueObject\Uuid;
+use OneCMS\Base\Domain\ValueObject\TimestampValueObject;
+use OneCMS\Base\Domain\ValueObject\UuidValueObject;
 
 /**
- * Class Person
+ * Person
  *
- * @package getonecms/user
+ * @package getonecms/ext-user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-final class Person implements RecyclableInterface
+final class Person
 {
-    use RecyclableBehaviour;
-
     /**
      * @var PersonId
      */
     private PersonId $id;
     /**
-     * @var Uuid
+     * @var UuidValueObject
      */
-    private Uuid $uuid;
+    private UuidValueObject $uuid;
     /**
      * @var string
      */
@@ -37,9 +34,9 @@ final class Person implements RecyclableInterface
      */
     private string $lastName;
     /**
-     * @var Timestamp
+     * @var TimestampValueObject
      */
-    private Timestamp $timestamp;
+    private TimestampValueObject $timestamp;
 
     /**
      * Person entity object constructor.
@@ -52,10 +49,10 @@ final class Person implements RecyclableInterface
      */
     public function __construct(
         PersonId  $id,
-        Uuid      $uuid,
+        UuidValueObject      $uuid,
         string    $firstName,
         string    $lastName,
-        Timestamp $timestamp
+        TimestampValueObject $timestamp
     ) {
         $this->id = $id;
         $this->uuid = $uuid;
@@ -81,7 +78,7 @@ final class Person implements RecyclableInterface
      */
     public function getUuid(): string
     {
-        return $this->uuid->getValue();
+        return $this->uuid->getUuid();
     }
 
     /**
@@ -105,9 +102,9 @@ final class Person implements RecyclableInterface
     }
 
     /**
-     * @return Timestamp
+     * @return TimestampValueObject
      */
-    public function getTimestamp(): Timestamp
+    public function getTimestamp(): TimestampValueObject
     {
         return $this->timestamp;
     }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Account;
 
-use OneCMS\Base\Domain\Service\IdentityServiceInterface;
+use OneCMS\Base\Domain\Service\Identity\IdentityServiceInterface;
 
 /**
  * Class AccountId

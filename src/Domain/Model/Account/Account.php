@@ -6,25 +6,23 @@ namespace OneCMS\User\Domain\Model\Account;
 use OneCMS\Base\Domain\Behaviour\Blockable\BlockableBehaviour;
 use OneCMS\Base\Domain\Behaviour\Blockable\BlockableInterface;
 use OneCMS\Base\Domain\ValueObject\EmailAddress;
+use OneCMS\Base\Domain\ValueObject\EmailValueObject;
 use OneCMS\User\Domain\Model\Person\Person;
-
 /**
  * The Account entity class holds the user's account information.
  *
- * @package getonecms/user
+ * @package getonecms/ext-user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-final class Account implements BlockableInterface
+final class Account
 {
-    use BlockableBehaviour;
-
     private AccountId $id;
 
     private Person $person;
 
-    private EmailAddress $email;
+    private EmailValueObject $email;
 
     private string $username;
 
@@ -51,7 +49,7 @@ final class Account implements BlockableInterface
     public function __construct(
         AccountId $id,
         Person $person,
-        EmailAddress $email,
+        EmailValueObject $email,
         string $username,
         AccountPasswordHash $passwordHash,
         string $validationToken,
@@ -91,11 +89,11 @@ final class Account implements BlockableInterface
     /**
      * Get the value of email
      *
-     * @return EmailAddress
+     * @return EmailValueObject
      */
     public function getEmail(): string
     {
-        return $this->email->getValue();
+        return $this->email->getEmail();
     }
 
     /**

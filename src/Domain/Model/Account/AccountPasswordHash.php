@@ -1,12 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Account;
 
 use OneCMS\User\Domain\Service\PasswordHashServiceInterface;
-
 /**
- * Undocumented class
+ * AccountPasswordHash
  */
 final class AccountPasswordHash
 {

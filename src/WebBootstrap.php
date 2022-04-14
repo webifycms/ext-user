@@ -1,33 +1,34 @@
 <?php
+
 declare(strict_types=1);
 
 namespace OneCMS\User;
 
-use OneCMS\Base\Infrastructure\Framework\Bootstrap\AbstractBootstrap;
-use OneCMS\Base\Infrastructure\Framework\Web\Application\WebApplicationInterface;
+use OneCMS\Base\Infrastructure\Service\Application\WebApplicationServiceInterface;
+use OneCMS\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
 use OneCMS\User\Infrastructure\Framework\Module;
 
 /**
- * Class Bootstrap
+ * WebBootstrap
  *
- * @package getonecms/user
+ * @package getonecms/ext-user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-class Bootstrap extends AbstractBootstrap
+class WebBootstrap extends WebBootstrapService
 {
     /**
-     * @param WebApplicationInterface $app
+     * @param WebApplicationServiceInterface $app
      */
-    public function init(WebApplicationInterface $app): void
+    public function init(WebApplicationServiceInterface $app): void
     {
         parent::init($app);
         set_alias('@User', dirname(__DIR__));
 
         $adminPath = $app->getAdministration()->getPath();
 
-        $app->getAdministration()->getMenu()->addItems([
+        $app->getAdministration()->setMenuItems([
             [
                 'label' => 'Users',
                 'icon' => 'person-square',
@@ -35,6 +36,6 @@ class Bootstrap extends AbstractBootstrap
                 'position' => 1,
             ]
         ]);
-        $app->getComponent()->getModule($adminPath)->setModule('user', ['class' => Module::class]);
+        $app->getApplication()->getModule($adminPath)->setModule('user', ['class' => Module::class]);
     }
 }
