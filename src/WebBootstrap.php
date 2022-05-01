@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OneCMS\User;
 
 use OneCMS\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
-use OneCMS\User\Infrastructure\Framework\Module;
+use OneCMS\User\Infrastructure\Module;
 
 /**
  * WebBootstrap
