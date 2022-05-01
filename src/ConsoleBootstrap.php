@@ -22,7 +22,7 @@ class ConsoleBootstrap extends ConsoleBootstrapService implements RegisterContro
      */
     public function init(): void
     {
-        set_alias('@User', dirname(__DIR__, 4));
+        set_alias('@User', __DIR__);
     }
 
     /**
