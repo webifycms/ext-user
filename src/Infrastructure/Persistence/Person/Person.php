@@ -91,7 +91,6 @@ final class Person extends ActiveRecordModel
      * Handles before save to database.
      *
      * @param bool $insert
-     * @return bool
      */
     public function beforeSave($insert): bool
     {

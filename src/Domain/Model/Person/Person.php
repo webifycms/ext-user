@@ -18,27 +18,6 @@ use OneCMS\Base\Domain\ValueObject\UuidValueObject;
 final class Person
 {
     /**
-     * @var PersonId
-     */
-    private PersonId $id;
-    /**
-     * @var UuidValueObject
-     */
-    private UuidValueObject $uuid;
-    /**
-     * @var string
-     */
-    private string $firstName;
-    /**
-     * @var string
-     */
-    private string $lastName;
-    /**
-     * @var TimestampValueObject
-     */
-    private TimestampValueObject $timestamp;
-
-    /**
      * Person entity object constructor.
      *
      * @param PersonId $id
@@ -47,24 +26,12 @@ final class Person
      * @param string $lastName
      * @param Timestamp $timestamp
      */
-    public function __construct(
-        PersonId  $id,
-        UuidValueObject      $uuid,
-        string    $firstName,
-        string    $lastName,
-        TimestampValueObject $timestamp
-    ) {
-        $this->id = $id;
-        $this->uuid = $uuid;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->timestamp = $timestamp;
+    public function __construct(private readonly PersonId  $id, private readonly UuidValueObject      $uuid, private readonly string    $firstName, private readonly string    $lastName, private readonly TimestampValueObject $timestamp)
+    {
     }
 
     /**
      * Get the value of id.
-     *
-     * @return string
      */
     public function getPersonId(): string
     {
@@ -73,8 +40,6 @@ final class Person
 
     /**
      * Get the value of uuid.
-     *
-     * @return string
      */
     public function getUuid(): string
     {
@@ -83,8 +48,6 @@ final class Person
 
     /**
      * Get the value of firstName.
-     *
-     * @return  string
      */
     public function getFirstName(): string
     {
@@ -93,17 +56,12 @@ final class Person
 
     /**
      * Get the value of lastName.
-     *
-     * @return  string
      */
     public function getLastName(): string
     {
         return $this->lastName;
     }
 
-    /**
-     * @return TimestampValueObject
-     */
     public function getTimestamp(): TimestampValueObject
     {
         return $this->timestamp;

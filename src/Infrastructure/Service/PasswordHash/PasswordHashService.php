@@ -7,15 +7,12 @@ use yii\base\Security;
 
 final class PasswordHashService implements PasswordHashServiceInterface
 {
-    private Security $securityComponent;
-
     private string $hash;
 
-    public function __construct(Security $securityComponent)
+    public function __construct(private readonly Security $securityComponent)
     {
-        $this->securityComponent = $securityComponent;
     }
-    
+
     public function generateHash(string $password): void
     {
         $this->hash = $this->securityComponent->generatePasswordHash($password);

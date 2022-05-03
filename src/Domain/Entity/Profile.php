@@ -15,14 +15,8 @@ use OneCMS\User\Domain\ValueObject\PersonId;
  */
 final class Profile
 {
-    private PersonId $userId;
-
-    private array $data;
-
-    public function __construct(PersonId $userId, array $data)
+    public function __construct(private readonly PersonId $userId, private readonly array $data)
     {
-        $this->userId = $userId;
-        $this->data = $data;
     }
 
     /**
@@ -38,9 +32,7 @@ final class Profile
     /**
      * Set information
      *
-     * @param string $name
      * @param mixed $value
-     * @return void
      */
     public function set(string $name, $value = null): void
     {
@@ -50,7 +42,6 @@ final class Profile
     /**
      * Get information
      *
-     * @param string $name
      * @return mixed
      */
     public function get(string $name)

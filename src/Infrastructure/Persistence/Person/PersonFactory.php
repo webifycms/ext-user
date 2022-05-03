@@ -23,22 +23,11 @@ use OneCMS\Base\Domain\Service\UuidServiceInterface;
 final class PersonFactory implements PersonFactoryInterface
 {
     /**
-     * @var IdentityServiceInterface
-     */
-    private IdentityServiceInterface $identityService;
-    /**
-     * @var UuidServiceInterface
-     */
-    private UuidServiceInterface $uuidService;
-
-    /**
      * @param IdentityServiceInterface $identityService
      * @param UuidServiceInterface $uuidService
      */
-    public function __construct(IdentityServiceInterface $identityService, UuidServiceInterface $uuidService)
+    public function __construct(private readonly IdentityServiceInterface $identityService, private readonly UuidServiceInterface $uuidService)
     {
-        $this->identityService = $identityService;
-        $this->uuidService = $uuidService;
     }
 
     /**

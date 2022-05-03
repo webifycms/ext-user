@@ -12,11 +12,8 @@ final class AccountPasswordHash
 {
     private string $hash;
 
-    private PasswordHashServiceInterface $passwordHashService;
-
-    public function __construct(PasswordHashServiceInterface $passwordHashService)
+    public function __construct(private readonly PasswordHashServiceInterface $passwordHashService)
     {
-        $this->passwordHashService = $passwordHashService;
     }
 
     public function setHash(string $password): void

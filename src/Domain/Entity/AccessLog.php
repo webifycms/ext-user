@@ -17,22 +17,6 @@ use OneCMS\User\Domain\ValueObject\PersonId;
  */
 final class AccessLog
 {
-    private PersonId $userId;
-
-    private AccountId $accountId;
-
-    private string $sessionId;
-
-    private string $ipAddress;
-
-    private string $remoteIpAddress;
-
-    private string $agent;
-
-    private bool $isActive;
-
-    private DateTimeInterface $timeIn;
-
     private ?DateTimeInterface $timeOut = null;
 
     /**
@@ -50,26 +34,17 @@ final class AccessLog
      * @return void
      */
     public function __construct(
-        PersonId           $userId,
-        AccountId          $accountId,
-        string             $sessionId,
-        string             $ipAddress,
-        string             $remoteIpAddress,
-        string             $agent,
-        bool               $isActive,
-        DateTimeInterface  $timeIn,
+        private readonly PersonId           $userId,
+        private readonly AccountId          $accountId,
+        private readonly string             $sessionId,
+        private readonly string             $ipAddress,
+        private readonly string             $remoteIpAddress,
+        private readonly string             $agent,
+        private readonly bool               $isActive,
+        private readonly DateTimeInterface  $timeIn,
         ?DateTimeInterface $timeOut = null
     )
     {
-        $this->userId = $userId;
-        $this->sessionId = $sessionId;
-        $this->ipAddress = $ipAddress;
-        $this->remoteIpAddress = $remoteIpAddress;
-        $this->agent = $agent;
-        $this->isActive = $isActive;
-        $this->accountId = $accountId;
-        $this->timeIn = $timeIn;
-
         if (!is_null($timeOut)) {
             $this->timeOut = $timeOut;
         }
@@ -97,8 +72,6 @@ final class AccessLog
 
     /**
      * Get the value of sessionId
-     *
-     * @return  string
      */
     public function getSessionId(): string
     {
@@ -107,8 +80,6 @@ final class AccessLog
 
     /**
      * Get the value of ipAddress
-     *
-     * @return  string
      */
     public function getIpAddress(): string
     {
@@ -117,8 +88,6 @@ final class AccessLog
 
     /**
      * Get the value of remoteIpAddress
-     *
-     * @return  string
      */
     public function getRemoteIpAddress(): string
     {
@@ -127,8 +96,6 @@ final class AccessLog
 
     /**
      * Get the value of agent
-     *
-     * @return  string
      */
     public function getAgent(): string
     {
@@ -137,8 +104,6 @@ final class AccessLog
 
     /**
      * Get the value of isActive
-     *
-     * @return  bool
      */
     public function isActive(): bool
     {
@@ -147,8 +112,6 @@ final class AccessLog
 
     /**
      * Get the value of timeIn
-     *
-     * @return  DateTimeInterface
      */
     public function getTimeIn(): DateTimeInterface
     {
@@ -157,8 +120,6 @@ final class AccessLog
 
     /**
      * Get the value of timeOut
-     *
-     * @return  ?DateTimeInterface
      */
     public function getTimeOut(): ?DateTimeInterface
     {

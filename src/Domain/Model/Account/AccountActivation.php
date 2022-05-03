@@ -11,26 +11,18 @@ use OneCMS\Base\Domain\ValueObject\DateTimeValueObject;
  */
 final class AccountActivation
 {
-    private ?string $token = null;
-
-    private ?DateTimeInterface $activatedAt = null;
-
     /**
      * Undocumented function
      *
      * @param string|null $token
      * @param DateTimeInterface|null $activatedAt
      */
-    public function __construct(?string $token = null, ?DateTimeInterface $activatedAt = null)
+    public function __construct(private readonly ?string $token = null, private ?\DateTimeInterface $activatedAt = null)
     {
-        $this->token = $token;
-        $this->activatedAt = $activatedAt;
     }
 
     /**
      * Get the value of activatedAt
-     *
-     * @return DateTimeInterface|null
      */
     public function getActivatedAt(): ?DateTimeInterface
     {
@@ -47,9 +39,6 @@ final class AccountActivation
 
     /**
      * Validates the given token and returns true if valid otherwise returns false.
-     *
-     * @param string $token
-     * @return bool
      */
     public function validateToken(string $token): bool
     {
@@ -58,8 +47,6 @@ final class AccountActivation
 
     /**
      * Returns true if activated otherwise returns false.
-     *
-     * @return bool
      */
     public function isActivated(): bool
     {
@@ -68,8 +55,6 @@ final class AccountActivation
 
     /**
      * Activates the account.
-     *
-     * @return void
      */
     public function activate(): void
     {

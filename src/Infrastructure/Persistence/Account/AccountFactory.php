@@ -11,16 +11,13 @@ use OneCMS\Base\Domain\Service\IdentityServiceInterface;
  */
 final class AccountFactory implements AccountFactoryInterface
 {
-    private IdentityServiceInterface $identityService;
-
     /**
      * AccountFactory constructor
      *
      * @param IdentityServiceInterface $identityService
      */
-    public function __construct(IdentityServiceInterface $identityService)
+    public function __construct(private readonly IdentityServiceInterface $identityService)
     {
-        $this->identityService = $identityService;
     }
 
     /**

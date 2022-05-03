@@ -17,11 +17,8 @@ use OneCMS\User\Infrastructure\Persistance\Person\Person as PersonModel;
  */
 final class PersonRepository implements PersonRepositoryInterface
 {
-    private PersonModel $model;
-
-    public function __construct(PersonModel $model)
+    public function __construct(private readonly PersonModel $model)
     {
-        $this->model = $model;
     }
 
     /**

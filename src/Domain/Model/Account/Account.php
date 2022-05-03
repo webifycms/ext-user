@@ -18,22 +18,6 @@ use OneCMS\User\Domain\Model\Person\Person;
  */
 final class Account
 {
-    private AccountId $id;
-
-    private Person $person;
-
-    private EmailValueObject $email;
-
-    private string $username;
-
-    private AccountPasswordHash $passwordHash;
-
-    private string $validationToken;
-
-    private ?string $registeredIp = null;
-
-    private AccountActivation $activation;
-
     /**
      * Account entity object constructor
      *
@@ -46,30 +30,12 @@ final class Account
      * @param string $registeredIp
      * @param AccountActivation $activation
      */
-    public function __construct(
-        AccountId $id,
-        Person $person,
-        EmailValueObject $email,
-        string $username,
-        AccountPasswordHash $passwordHash,
-        string $validationToken,
-        ?string $registeredIp,
-        AccountActivation $activation
-    ) {
-        $this->id = $id;
-        $this->person = $person;
-        $this->email = $email;
-        $this->username = $username;
-        $this->passwordHash = $passwordHash;
-        $this->validationToken = $validationToken;
-        $this->registeredIp = $registeredIp;
-        $this->activation = $activation;
+    public function __construct(private readonly AccountId $id, private readonly Person $person, private readonly EmailValueObject $email, private readonly string $username, private readonly AccountPasswordHash $passwordHash, private readonly string $validationToken, private readonly ?string $registeredIp, private readonly AccountActivation $activation)
+    {
     }
 
     /**
      * Get the value of id
-     *
-     * @return string
      */
     public function getId(): string
     {
@@ -78,8 +44,6 @@ final class Account
 
     /**
      * Get the Person object
-     *
-     * @return Person
      */
     public function getPerson(): Person
     {
@@ -98,8 +62,6 @@ final class Account
 
     /**
      * Get the value of username
-     *
-     * @return string
      */
     public function getUsername(): string
     {
@@ -108,8 +70,6 @@ final class Account
 
     /**
      * Get the passwordHash object
-     *
-     * @return AccountPasswordHash
      */
     public function getPasswordHash(): AccountPasswordHash
     {
@@ -118,8 +78,6 @@ final class Account
 
     /**
      * Get the value of validationToken
-     *
-     * @return string
      */
     public function getValidationToken(): string
     {
@@ -128,8 +86,6 @@ final class Account
 
     /**
      * Get the value of registeredIp
-     *
-     * @return string
      */
     public function getRegisteredIp(): string
     {
@@ -138,8 +94,6 @@ final class Account
 
     /**
      * Get the AccountActivation object
-     *
-     * @return AccountActivation
      */
     public function getActivation(): AccountActivation
     {

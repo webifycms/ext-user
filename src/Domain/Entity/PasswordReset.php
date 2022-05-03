@@ -16,12 +16,6 @@ use OneCMS\User\Domain\ValueObject\PersonId;
  */
 final class PasswordReset
 {
-    private PersonId $userId;
-
-    private string $token;
-
-    private DateTimeInterface $expiryAt;
-
     private ?DateTimeInterface $resettedAt = null;
 
     /**
@@ -34,16 +28,12 @@ final class PasswordReset
      * @return void
      */
     public function __construct(
-        PersonId           $userId,
-        string             $token,
-        DateTimeInterface  $expiryAt,
+        private readonly PersonId           $userId,
+        private readonly string             $token,
+        private readonly DateTimeInterface  $expiryAt,
         ?DateTimeInterface $resettedAt = null
     )
     {
-        $this->userId = $userId;
-        $this->token = $token;
-        $this->expiryAt = $expiryAt;
-
         if (!is_null($resettedAt)) {
             $this->resettedAt = $resettedAt;
         }
@@ -61,8 +51,6 @@ final class PasswordReset
 
     /**
      * Get the value of token
-     *
-     * @return  string
      */
     public function getToken(): string
     {
@@ -71,8 +59,6 @@ final class PasswordReset
 
     /**
      * Get the value of expiryAt
-     *
-     * @return  DateTimeInterface
      */
     public function getExpiryAt(): DateTimeInterface
     {
@@ -81,8 +67,6 @@ final class PasswordReset
 
     /**
      * Get the value of resettedAt
-     *
-     * @return  ?DateTimeInterface
      */
     public function getResettedAt(): ?DateTimeInterface
     {

@@ -25,14 +25,11 @@ class ConsoleBootstrap extends ConsoleBootstrapService implements RegisterContro
         set_alias('@User', dirname(__DIR__));
     }
 
-    /**
-     * @return array
-     */
     public function controllers(): array
     {
         return [
             'migrate-user' => [
-                'class' => 'yii\console\controllers\MigrateController',
+                'class' => \yii\console\controllers\MigrateController::class,
                 'migrationPath' => '@User/src/Infrastructure/Console/Migration', //null,
                 'migrationTable' => 'migration_user',
                 // 'migrationNamespaces' => [

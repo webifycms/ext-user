@@ -18,7 +18,7 @@ final class AccountId
     /**
      * @var string
      */
-    private string $value;
+    private readonly string $value;
     
     /**
      * AccountId constructor.
@@ -30,9 +30,6 @@ final class AccountId
         $this->value = (string) $identityService->getId();
     }
     
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;

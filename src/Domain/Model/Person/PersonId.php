@@ -18,7 +18,7 @@ final class PersonId
     /**
      * @var string
      */
-    private string $value;
+    private readonly string $value;
 
     /**
      * PersonId constructor.
@@ -30,9 +30,6 @@ final class PersonId
         $this->value = (string) $identityService->getId();
     }
     
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;

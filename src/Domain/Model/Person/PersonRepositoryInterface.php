@@ -16,7 +16,6 @@ interface PersonRepositoryInterface
     /**
      * Persist user.
      *
-     * @param Person $person
      * @return mixed
      */
     public function persist(Person $person);
@@ -24,7 +23,6 @@ interface PersonRepositoryInterface
     /**
      * Trash user.
      *
-     * @param PersonId $personId
      * @return mixed
      */
     public function trash(PersonId $personId);
@@ -32,7 +30,6 @@ interface PersonRepositoryInterface
     /**
      * Restore user from trash.
      *
-     * @param PersonId $personId
      * @return void
      */
     public function restore(PersonId $personId);
@@ -41,7 +38,6 @@ interface PersonRepositoryInterface
      * Delete user.
      * Note: This will permanently delete the user.
      *
-     * @param PersonId $personId
      * @return void
      */
     public function delete(PersonId $personId);

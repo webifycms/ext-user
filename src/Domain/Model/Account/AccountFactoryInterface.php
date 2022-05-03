@@ -21,7 +21,6 @@ interface AccountFactoryInterface
      * activation
      *
      * @param array $args
-     * @return Account
      */
     public function build(array $args): Account;
 }

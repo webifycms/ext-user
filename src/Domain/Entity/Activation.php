@@ -17,28 +17,15 @@ use OneCMS\User\Domain\ValueObject\PersonId;
  */
 final class Activation
 {
-    private PersonId $userId;
-
-    private AccountId $accountId;
-
-    private string $token;
-
-    private DateTimeInterface $expiryAt;
-
     private ?DateTimeInterface $activatedAt = null;
 
     public function __construct(
-        PersonId           $userId,
-        AccountId          $accountId,
-        string             $token,
-        DateTimeInterface  $expiryAt,
+        private readonly PersonId           $userId,
+        private readonly AccountId          $accountId,
+        private readonly string             $token,
+        private readonly DateTimeInterface  $expiryAt,
         ?DateTimeInterface $activatedAt = null
     ) {
-        $this->userId = $userId;
-        $this->accountId = $accountId;
-        $this->token = $token;
-        $this->expiryAt = $expiryAt;
-
         if (!is_null($activatedAt)) {
             $this->activatedAt = $activatedAt;
         }
@@ -66,8 +53,6 @@ final class Activation
 
     /**
      * Get the value of token
-     *
-     * @return  string
      */
     public function getToken(): string
     {
@@ -76,8 +61,6 @@ final class Activation
 
     /**
      * Get the value of activatedAt
-     *
-     * @return  DateTimeInterface
      */
     public function getActivatedAt(): DateTimeInterface
     {
@@ -86,8 +69,6 @@ final class Activation
 
     /**
      * Get the value of expiryAt
-     *
-     * @return  DateTimeInterface
      */
     public function getExpiryAt(): DateTimeInterface
     {

@@ -17,23 +17,13 @@ use OneCMS\User\Infrastructure\Persistance\Person\PersonRepository;
  */
 final class CreatePersonAction
 {
-    private CreatePersonRequest $request;
-    private PersonFactoryInterface $factory;
-    private PersonRepository $repository;
-
     /**
      * @param CreatePersonRequest $request
      * @param PersonFactoryInterface $factory
      * @param PersonRepository $repository
      */
-    public function __construct(
-        CreatePersonRequest    $request,
-        PersonFactoryInterface $factory,
-        PersonRepository       $repository
-    ) {
-        $this->request = $request;
-        $this->factory = $factory;
-        $this->repository = $repository;
+    public function __construct(private readonly CreatePersonRequest    $request, private readonly PersonFactoryInterface $factory, private readonly PersonRepository       $repository)
+    {
     }
 
     /**

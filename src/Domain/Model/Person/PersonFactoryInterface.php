@@ -15,7 +15,6 @@ interface PersonFactoryInterface
 {
     /**
      * @param mixed $request
-     * @return Person
      */
     public function build($request): Person;
 
