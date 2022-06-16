@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace OneCMS\User;
 
+use OneCMS\Base\Infrastructure\Service\Bootstrap\RegisterDependencyBootstrapInterface;
 use OneCMS\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
-use OneCMS\User\Infrastructure\Module;
+use OneCMS\User\Application\Repository\Person\PersonRepositoryInterface;
+use OneCMS\User\Infrastructure\UserModule;
+use OneCMS\User\Infrastructure\Persistence\Person\PersonRepository;
 
 /**
  * WebBootstrap
@@ -15,7 +18,7 @@ use OneCMS\User\Infrastructure\Module;
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-class WebBootstrap extends WebBootstrapService
+class WebBootstrap extends WebBootstrapService implements RegisterDependencyBootstrapInterface
 {
     /**
      * @inheritdoc
@@ -26,6 +29,30 @@ class WebBootstrap extends WebBootstrapService
 
         $adminPath = $this->getApplicationService()->getAdministration()->getPath();
 
+        $this->getApplication()->getModule($adminPath)->setModule('user', [
+            'class' => UserModule::class
+        ]);
+        $this->registerAdminMenuItems($adminPath);
+        $this->registerTranslations();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function dependencies(): array
+    {
+        return [
+            PersonRepositoryInterface::class => PersonRepository::class
+        ];
+    }
+
+    /**
+     * Register user extension's admin menu items.
+     *
+     * @param string $adminPath
+     */
+    private function registerAdminMenuItems(string $adminPath): void
+    {
         $this->getApplicationService()->getAdministration()->setMenuItems([
             [
                 'label' => 'Users',
@@ -34,6 +61,17 @@ class WebBootstrap extends WebBootstrapService
                 'position' => 1,
             ]
         ]);
-        $this->getApplicationService()->getApplication()->getModule($adminPath)->setModule('user', ['class' => Module::class]);
+    }
+
+    /**
+     * Register translations for user extension.
+     */
+    private function registerTranslations(): void
+    {
+        $this->getApplication()->i18n->translations['user*'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => 'en-US',
+            'basePath' => '@User/resources/translations',
+        ];
     }
 }

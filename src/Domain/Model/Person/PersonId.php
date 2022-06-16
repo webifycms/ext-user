@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person;
 
-use OneCMS\Base\Domain\Service\Identity\IdentityServiceInterface;
+use OneCMS\Base\Domain\Service\Uuid\UuidServiceInterface;
 
 /**
  * Class PersonId
@@ -23,13 +24,18 @@ final class PersonId
     /**
      * PersonId constructor.
      *
-     * @param IdentityServiceInterface $identityService
+     * @param UuidServiceInterface $uuidService
      */
-    public function __construct(IdentityServiceInterface $identityService)
+    public function __construct(UuidServiceInterface $uuidService)
     {
-        $this->value = (string) $identityService->getId();
+        $this->value = $uuidService->toString();
     }
-    
+
+    /**
+     * Returns the ID as string.
+     *
+     * @return string
+     */
     public function getValue(): string
     {
         return $this->value;

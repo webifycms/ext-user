@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person;
 
+use DateTimeInterface;
 use OneCMS\Base\Domain\ValueObject\TimestampValueObject;
-use OneCMS\Base\Domain\ValueObject\UuidValueObject;
+use OneCMS\Base\Domain\ValueObject\RecycleValueObject;
+use OneCMS\Base\Domain\Model\RecyclableModelInterface;
 
 /**
  * Person
@@ -15,35 +17,32 @@ use OneCMS\Base\Domain\ValueObject\UuidValueObject;
  * @since   0.0.1
  * @author  Mohammed Shifreen
  */
-final class Person
+final class Person implements RecyclableModelInterface
 {
     /**
      * Person entity object constructor.
      *
      * @param PersonId $id
-     * @param Uuid $uuid
      * @param string $firstName
      * @param string $lastName
-     * @param Timestamp $timestamp
+     * @param TimestampValueObject $timestamp
+     * @param ?RecycleValueObject $recycle
      */
-    public function __construct(private readonly PersonId  $id, private readonly UuidValueObject      $uuid, private readonly string    $firstName, private readonly string    $lastName, private readonly TimestampValueObject $timestamp)
-    {
+    public function __construct(
+        private readonly PersonId $id,
+        private readonly string $firstName,
+        private readonly string $lastName,
+        private readonly TimestampValueObject $timestamp,
+        private readonly ?RecycleValueObject $recycle = null
+    ) {
     }
 
     /**
      * Get the value of id.
      */
-    public function getPersonId(): string
+    public function getId(): string
     {
         return $this->id->getValue();
-    }
-
-    /**
-     * Get the value of uuid.
-     */
-    public function getUuid(): string
-    {
-        return $this->uuid->getUuid();
     }
 
     /**
@@ -62,8 +61,31 @@ final class Person
         return $this->lastName;
     }
 
+    /**
+     * Get the timestamp value object.
+     *
+     * @return TimestampValueObject
+     */
     public function getTimestamp(): TimestampValueObject
     {
         return $this->timestamp;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function inRecycle(): bool
+    {
+        return $this->recycle instanceof RecycleValueObject;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRecycledAt(): DateTimeInterface
+    {
+        if ($this->inRecycle()) {
+            return $this->recycle->getRecycledAt();
+        }
     }
 }
