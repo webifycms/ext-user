@@ -1,91 +1,69 @@
 <?php
+/**
+ * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ *
+ * @see https://getonecms.com/extension/user
+ *
+ * @license Copyright (c) 2022 OneCMS
+ * @license https://getonecms.com/extension/user/license
+ * @author Mohammed Shifreen <mshifreen@gmail.com>
+ */
 
 declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person;
 
-use DateTimeInterface;
-use OneCMS\Base\Domain\ValueObject\TimestampValueObject;
-use OneCMS\Base\Domain\ValueObject\RecycleValueObject;
 use OneCMS\Base\Domain\Model\RecyclableModelInterface;
+use OneCMS\Base\Domain\ValueObject\DateTimeValueObject;
+use OneCMS\User\Domain\Model\Person\ValueObject\PersonAddress;
+use OneCMS\User\Domain\Model\Person\ValueObject\PersonEmail;
+use OneCMS\User\Domain\Model\Person\ValueObject\PersonId;
+use OneCMS\User\Domain\Model\Person\ValueObject\PersonName;
 
 /**
- * Person
- *
- * @package getonecms/ext-user
- * @version 0.0.1
- * @since   0.0.1
- * @author  Mohammed Shifreen
+ * It's an entity class that represents a person object.
  */
 final class Person implements RecyclableModelInterface
 {
-    /**
-     * Person entity object constructor.
-     *
-     * @param PersonId $id
-     * @param string $firstName
-     * @param string $lastName
-     * @param TimestampValueObject $timestamp
-     * @param ?RecycleValueObject $recycle
-     */
-    public function __construct(
-        private readonly PersonId $id,
-        private readonly string $firstName,
-        private readonly string $lastName,
-        private readonly TimestampValueObject $timestamp,
-        private readonly ?RecycleValueObject $recycle = null
-    ) {
-    }
+	/**
+	 * The object constructor.
+	 */
+	public function __construct(
+		public readonly PersonId $id,
+		public readonly PersonName $name,
+		public readonly PersonEmail $email,
+		public readonly PersonAddress $address,
+		private ?DateTimeValueObject $trashedAt = null
+	) {
+	}
 
-    /**
-     * Get the value of id.
-     */
-    public function getId(): string
-    {
-        return $this->id->getValue();
-    }
+	/**
+	 * Move the Person object into trash.
+	 */
+	public function moveToTrash(): TrashedPerson
+	{
+		$this->trashedAt = new DateTimeValueObject();
 
-    /**
-     * Get the value of firstName.
-     */
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
+		return new TrashedPerson($this);
+	}
 
-    /**
-     * Get the value of lastName.
-     */
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function isInTrash(): bool
+	{
+		return $this->trashedAt instanceof DateTimeValueObject;
+	}
 
-    /**
-     * Get the timestamp value object.
-     *
-     * @return TimestampValueObject
-     */
-    public function getTimestamp(): TimestampValueObject
-    {
-        return $this->timestamp;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public function getTrashedAt(?string $format = null): ?string
+	{
+		if ($this->isInTrash()) {
+			return null !== $format ? $this->trashedAt->getDateTime()->format($format) : (string) $this->trashedAt;
+		}
 
-    /**
-     * @inheritDoc
-     */
-    public function inRecycle(): bool
-    {
-        return $this->recycle instanceof RecycleValueObject;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getRecycledAt(): DateTimeInterface
-    {
-        if ($this->inRecycle()) {
-            return $this->recycle->getRecycledAt();
-        }
-    }
+		return null;
+	}
 }
