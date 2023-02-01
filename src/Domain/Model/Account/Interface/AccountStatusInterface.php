@@ -10,11 +10,9 @@
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Person\ValueObject;
+namespace OneCMS\User\Domain\Model\Account\Interface;
 
-/**
- * @todo Should add the required address fields.
- */
-final class PersonAddress
+interface AccountStatusInterface
 {
+    public function pending(): void;
 }

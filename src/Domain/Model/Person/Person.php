@@ -15,6 +15,7 @@ namespace OneCMS\User\Domain\Model\Person;
 
 use OneCMS\Base\Domain\Model\RecyclableModelInterface;
 use OneCMS\Base\Domain\ValueObject\DateTimeValueObject;
+use OneCMS\User\Domain\Model\Person\Exception\UnableToUnTrashPersonException;
 use OneCMS\User\Domain\Model\Person\ValueObject\PersonAddress;
 use OneCMS\User\Domain\Model\Person\ValueObject\PersonEmail;
 use OneCMS\User\Domain\Model\Person\ValueObject\PersonId;
@@ -33,7 +34,7 @@ final class Person implements RecyclableModelInterface
 		public readonly PersonName $name,
 		public readonly PersonEmail $email,
 		public readonly PersonAddress $address,
-		private ?DateTimeValueObject $trashedAt = null
+		private ?\DateTimeInterface $trashedAt = null
 	) {
 	}
 
@@ -42,9 +43,21 @@ final class Person implements RecyclableModelInterface
 	 */
 	public function moveToTrash(): TrashedPerson
 	{
-		$this->trashedAt = new DateTimeValueObject();
+		$this->trashedAt = DateTimeValueObject::create()->getDateTimeObject();
 
 		return new TrashedPerson($this);
+	}
+
+	/**
+	 * Un trash the person.
+	 */
+	public function unTrash(): void
+	{
+		if ($this->isInTrash()) {
+			$this->trashedAt = null;
+		}
+
+		throw new UnableToUnTrashPersonException('person_not_in_trash');
 	}
 
 	/**
@@ -52,16 +65,16 @@ final class Person implements RecyclableModelInterface
 	 */
 	public function isInTrash(): bool
 	{
-		return $this->trashedAt instanceof DateTimeValueObject;
+		return $this->trashedAt instanceof \DateTimeInterface;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function getTrashedAt(?string $format = null): ?string
+	public function getTrashedAt(string $format): ?string
 	{
 		if ($this->isInTrash()) {
-			return null !== $format ? $this->trashedAt->getDateTime()->format($format) : (string) $this->trashedAt;
+			return $this->trashedAt->format($format);
 		}
 
 		return null;

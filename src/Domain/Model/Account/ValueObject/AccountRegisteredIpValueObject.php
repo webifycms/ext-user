@@ -10,11 +10,13 @@
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Person\ValueObject;
+namespace OneCMS\User\Domain\Model\Account\ValueObject;
+
+use OneCMS\Base\Domain\ValueObject\IpValueObject;
 
 /**
- * @todo Should add the required address fields.
+ * An value object represents account registered IP address.
  */
-final class PersonAddress
+final class AccountRegisteredIpValueObject extends IpValueObject
 {
 }

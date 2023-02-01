@@ -10,11 +10,16 @@
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Person\ValueObject;
+namespace OneCMS\User\Domain\Model\Account\ValueObject;
 
 /**
- * @todo Should add the required address fields.
+ * A value object type enum class that represents account statuses.
  */
-final class PersonAddress
+enum AccountStatusValueObject: string
 {
+	case PENDING = 'pending';
+
+	case ACTIVATED = 'activated';
+
+	case BLOCKED = 'blocked';
 }

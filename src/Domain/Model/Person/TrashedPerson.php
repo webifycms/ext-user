@@ -56,9 +56,9 @@ final class TrashedPerson
 	}
 
 	/**
-	 * Returns the trashed at datetime formatted string.
+	 * Returns the trashed at datetime in given format.
 	 */
-	public function getTrashedAt(?string $format = null): string
+	public function getTrashedAt(string $format): ?string
 	{
 		return $this->person->getTrashedAt($format);
 	}

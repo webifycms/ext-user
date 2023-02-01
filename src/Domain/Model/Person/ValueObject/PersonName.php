@@ -8,12 +8,11 @@
  * @license https://getonecms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
-
 declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person\ValueObject;
 
-use OneCMS\User\Domain\Model\Person\Exception\PersonNameMaxCharactersExceededException;
+use OneCMS\User\Domain\Model\Person\Exception\InvalidPersonNameException;
 
 /**
  * It's a value object that represents a person's first and last name.
@@ -22,7 +21,7 @@ final class PersonName
 {
 	/**
 	 * It's a constant that represents the maximum number of characters allowed for a person's
-	 * first and last name.
+	 * first and last names.
 	 */
 	private const MAXIMUM_CHARACTERS = 255;
 
@@ -34,8 +33,11 @@ final class PersonName
 		public readonly string $firstName,
 		public readonly string $lastName
 	) {
-		if (mb_strlen($this->firstName) > self::MAXIMUM_CHARACTERS || mb_strlen($this->lastName) > self::MAXIMUM_CHARACTERS) {
-			throw new PersonNameMaxCharactersExceededException('maximum_characters_exceeded', ['limit' => self::MAXIMUM_CHARACTERS]);
+		if (!$this->isValid([$this->firstName, $this->lastName])) {
+			throw new InvalidPersonNameException(
+				'maximum_characters_exceeded',
+				['limit' => self::MAXIMUM_CHARACTERS]
+			);
 		}
 	}
 
@@ -47,5 +49,21 @@ final class PersonName
 	public function __toString(): string
 	{
 		return $this->firstName . ' ' . $this->lastName;
+	}
+
+	/**
+	 * Validates the given first and last names.
+	 *
+	 * @param array<string> $names
+	 */
+	private function isValid(array $names): bool
+	{
+		foreach ($names as $name) {
+			if (mb_strlen($name) > self::MAXIMUM_CHARACTERS) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 }

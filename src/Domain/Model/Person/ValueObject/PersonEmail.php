@@ -8,7 +8,6 @@
  * @license https://getonecms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
-
 declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person\ValueObject;

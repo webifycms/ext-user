@@ -8,24 +8,25 @@
  * @license https://getonecms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
+
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Person\Exception;
+namespace OneCMS\User\Domain\Model\Account\Exception;
 
 use OneCMS\Base\Domain\Exception\TranslatableInvalidArgumentException;
 
 /**
- * It's a custom exception that is thrown when a person's name exceeds the maximum number of characters.
+ * Invalid username exception class
  */
-final class PersonNameMaxCharactersExceededException extends TranslatableInvalidArgumentException
+final class InvalidUsernameException extends TranslatableInvalidArgumentException
 {
 	/**
-	 * The class constructor.
+	 * The object constructor.
 	 *
-	 * @param mixed[] $params
+	 * @param string[] $params
 	 */
 	public function __construct(
-		string $messageKey = 'maximum_characters_exceeded',
+		string $messageKey = 'invalid_username',
 		array $params = []
 	) {
 		parent::__construct($messageKey, $params);
