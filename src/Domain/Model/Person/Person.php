@@ -8,14 +8,10 @@
  * @license https://getonecms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
-
 declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person;
 
-use OneCMS\Base\Domain\Model\RecyclableModelInterface;
-use OneCMS\Base\Domain\ValueObject\DateTimeValueObject;
-use OneCMS\User\Domain\Model\Person\Exception\UnableToUnTrashPersonException;
 use OneCMS\User\Domain\Model\Person\ValueObject\PersonAddress;
 use OneCMS\User\Domain\Model\Person\ValueObject\PersonEmail;
 use OneCMS\User\Domain\Model\Person\ValueObject\PersonId;
@@ -24,7 +20,7 @@ use OneCMS\User\Domain\Model\Person\ValueObject\PersonName;
 /**
  * It's an entity class that represents a person object.
  */
-final class Person implements RecyclableModelInterface
+final class Person
 {
 	/**
 	 * The object constructor.
@@ -33,50 +29,7 @@ final class Person implements RecyclableModelInterface
 		public readonly PersonId $id,
 		public readonly PersonName $name,
 		public readonly PersonEmail $email,
-		public readonly PersonAddress $address,
-		private ?\DateTimeInterface $trashedAt = null
+		public readonly PersonAddress $address
 	) {
-	}
-
-	/**
-	 * Move the Person object into trash.
-	 */
-	public function moveToTrash(): TrashedPerson
-	{
-		$this->trashedAt = DateTimeValueObject::create()->getDateTimeObject();
-
-		return new TrashedPerson($this);
-	}
-
-	/**
-	 * Un trash the person.
-	 */
-	public function unTrash(): void
-	{
-		if ($this->isInTrash()) {
-			$this->trashedAt = null;
-		}
-
-		throw new UnableToUnTrashPersonException('person_not_in_trash');
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public function isInTrash(): bool
-	{
-		return $this->trashedAt instanceof \DateTimeInterface;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public function getTrashedAt(string $format): ?string
-	{
-		if ($this->isInTrash()) {
-			return $this->trashedAt->format($format);
-		}
-
-		return null;
 	}
 }

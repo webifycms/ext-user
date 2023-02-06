@@ -12,14 +12,18 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Account;
 
-use OneCMS\Base\Domain\Exception\TranslatableRuntimeException;
+use OneCMS\User\Domain\Model\Account\Factory\BlockedAccountFactory;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountActivationHashValueObject;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountEmail;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountId;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountPassword;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountPasswordHash;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountRegisteredIpValueObject;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountStatusValueObject;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountUsername;
 
 /**
  * Entity class that have the state of activated and represents as activated account.
- *
- * @todo To avoid code duplication and setters for additional properties introduced init method and should be investigate for good practice.
  */
 final class ActivatedAccount extends Account
 {
@@ -29,24 +33,26 @@ final class ActivatedAccount extends Account
 	private AccountStatusValueObject $status = AccountStatusValueObject::ACTIVATED;
 
 	/**
-	 * The datetime of the account activation and initially null.
+	 * The object constructor.
 	 */
-	private ?\DateTimeInterface $activatedAt = null;
+	public function __construct(
+		public readonly AccountId $id,
+		public readonly AccountUsername $username,
+		public readonly AccountEmail $email,
+		public readonly AccountActivationHashValueObject $activationHash,
+		public readonly ?AccountRegisteredIpValueObject $registeredIp,
+		public readonly ?AccountPassword $password,
+		public readonly ?AccountPasswordHash $passwordHash,
+		private readonly \DateTimeInterface $activatedAt
+	) {
+	}
 
 	/**
-	 * The activation hash.
+	 * Returns the activated datetime as string for the given format.
 	 */
-	private ?AccountActivationHashValueObject $activationHash = null;
-
-	/**
-	 * Initialize with the additional properties this object required.
-	 */
-	public function init(
-		\DateTimeInterface $activatedAt,
-		AccountActivationHashValueObject $activationHash
-	): void {
-		$this->activatedAt    = $activatedAt;
-		$this->activationHash = $activationHash;
+	public function getActivatedAt(string $format): string
+	{
+		return $this->activatedAt->format($format);
 	}
 
 	/**
@@ -58,30 +64,11 @@ final class ActivatedAccount extends Account
 	}
 
 	/**
-	 * Returns the activation hash as object.
-	 *
-	 * @throws TranslatableRuntimeException if activation hash not sets the exception will be thrown
+	 * Block the account.
+	 * Only activated account can be block.
 	 */
-	public function getActivationHash(): AccountActivationHashValueObject
+	public function block(): BlockedAccount
 	{
-		if ($this->activationHash instanceof AccountActivationHashValueObject) {
-			return $this->activationHash;
-		}
-
-		throw new TranslatableRuntimeException('activation_hash_not_set');
-	}
-
-	/**
-	 * Returns the activated datetime as string for the given format.
-	 *
-	 * @throws TranslatableRuntimeException if activated datetime not sets the exception will be thrown
-	 */
-	public function getActivatedAt(string $format): string
-	{
-		if ($this->activatedAt instanceof \DateTimeInterface) {
-			return $this->activatedAt->format($format);
-		}
-
-		throw new TranslatableRuntimeException('activated_datetime_not_set');
+		return (new BlockedAccountFactory())->createFromActivatedAccount($this);
 	}
 }

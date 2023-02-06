@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Account;
 
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountActivationHashValueObject;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountEmail;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountId;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountPassword;
@@ -20,17 +21,18 @@ use OneCMS\User\Domain\Model\Account\ValueObject\AccountRegisteredIpValueObject;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountUsername;
 
 /**
- * The Account entity class holds the user's account information.
+ * Abstract class for the account entities.
  */
 abstract class Account
 {
 	/**
 	 * The object constructor.
 	 */
-	final public function __construct(
+	public function __construct(
 		public readonly AccountId $id,
 		public readonly AccountUsername $username,
 		public readonly AccountEmail $email,
+		public readonly AccountActivationHashValueObject $activationHash,
 		public readonly ?AccountRegisteredIpValueObject $registeredIp = null,
 		public readonly ?AccountPassword $password = null,
 		public readonly ?AccountPasswordHash $passwordHash = null

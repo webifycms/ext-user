@@ -34,11 +34,11 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../ext-base"
+            "url": "../onecms-ext-base"
         },
         {
             "type": "path",
-            "url": "../ext-admin"
+            "url": "../onecms-ext-admin"
         },
         {
             "type": "vcs",

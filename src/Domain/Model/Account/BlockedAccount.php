@@ -12,13 +12,18 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Account;
 
-use OneCMS\Base\Domain\Exception\TranslatableRuntimeException;
+use OneCMS\User\Domain\Model\Account\Factory\ActivatedAccountFactory;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountActivationHashValueObject;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountEmail;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountId;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountPassword;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountPasswordHash;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountRegisteredIpValueObject;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountStatusValueObject;
+use OneCMS\User\Domain\Model\Account\ValueObject\AccountUsername;
 
 /**
  * Entity class that have the state of blocked and represents as blocked account.
- *
- * @todo To avoid code duplication I have introduced a setter here instead of using the constructor and it has to be investigate.
  */
 final class BlockedAccount extends Account
 {
@@ -28,18 +33,27 @@ final class BlockedAccount extends Account
 	private AccountStatusValueObject $status = AccountStatusValueObject::BLOCKED;
 
 	/**
-	 * The datetime of the account got blocked and initially null.
+	 * The object constructor.
 	 */
-	private ?\DateTimeInterface $blockedAt = null;
+	public function __construct(
+		public readonly AccountId $id,
+		public readonly AccountUsername $username,
+		public readonly AccountEmail $email,
+		public readonly AccountActivationHashValueObject $activationHash,
+		public readonly ?AccountRegisteredIpValueObject $registeredIp,
+		public readonly ?AccountPassword $password,
+		public readonly ?AccountPasswordHash $passwordHash,
+		private readonly \DateTimeInterface $activatedAt,
+		private readonly \DateTimeInterface $blockedAt
+	) {
+	}
 
 	/**
-	 * Set blocked datetime, this is important and should be set right after the object was constructed.
+	 * Returns the activated datetime as string for the given format.
 	 */
-	public function setBlockedAt(\DateTimeInterface $datetime): self
+	public function getActivatedAt(string $format): string
 	{
-		$this->blockedAt = $datetime;
-
-		return $this;
+		return $this->activatedAt->format($format);
 	}
 
 	/**
@@ -47,11 +61,7 @@ final class BlockedAccount extends Account
 	 */
 	public function getBlockedAt(string $format): string
 	{
-		if ($this->blockedAt instanceof \DateTimeInterface) {
-			return $this->blockedAt->format($format);
-		}
-
-		throw new TranslatableRuntimeException('blocked_datetime_not_set');
+		return $this->blockedAt->format($format);
 	}
 
 	/**
@@ -60,5 +70,14 @@ final class BlockedAccount extends Account
 	public function getStatus(): string
 	{
 		return $this->status->value;
+	}
+
+	/**
+	 * Unblock the account.
+	 * Only blocked account can be unblock.
+	 */
+	public function unblock(): ActivatedAccount
+	{
+		return (new ActivatedAccountFactory())->createFromBlockedAccount($this);
 	}
 }

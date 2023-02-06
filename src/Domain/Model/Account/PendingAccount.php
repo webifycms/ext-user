@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Account;
 
+use OneCMS\User\Domain\Model\Account\Factory\ActivatedAccountFactory;
 use OneCMS\User\Domain\Model\Account\ValueObject\AccountStatusValueObject;
 
 /**
@@ -31,5 +32,14 @@ final class PendingAccount extends Account
 	public function getStatus(): string
 	{
 		return $this->status->value;
+	}
+
+	/**
+	 * Activate the account.
+	 * Only pending account can be activated.
+	 */
+	public function activate(): ActivatedAccount
+	{
+		return (new ActivatedAccountFactory())->createFromPendingAccount($this);
 	}
 }
