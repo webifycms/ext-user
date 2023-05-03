@@ -18,9 +18,9 @@ use OneCMS\User\Domain\Model\Person\ValueObject\PersonId;
 use OneCMS\User\Domain\Model\Person\ValueObject\PersonName;
 
 /**
- * It's an entity class that represents a person object.
+ * It's an entity class that represents a person object and it is an aggregate root.
  */
-final class Person
+abstract class Person
 {
 	/**
 	 * The object constructor.
