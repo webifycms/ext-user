@@ -12,11 +12,19 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Person\ValueObject;
 
-use OneCMS\Base\Domain\ValueObject\UniqueIdValueObject;
+use OneCMS\Base\Domain\ValueObject\IncrementalIdValueObject;
+use OneCMS\User\Domain\Model\Account\Exception\InvalidAccountIdException;
 
 /**
  * This class represents a person's unique ID.
  */
-final class PersonId extends UniqueIdValueObject
+final class PersonId extends IncrementalIdValueObject
 {
+	/**
+	 * {@inheritDoc}
+	 */
+	protected function throwException(array $params): void
+	{
+		throw new InvalidAccountIdException('invalid_person_id', $params);
+	}
 }
