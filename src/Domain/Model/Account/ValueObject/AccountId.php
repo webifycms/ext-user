@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace OneCMS\User\Domain\Model\Account\ValueObject;
 
-use OneCMS\Base\Domain\ValueObject\UniqueIdValueObject;
+use OneCMS\Base\Domain\ValueObject\IncrementalIdValueObject;
 use OneCMS\User\Domain\Model\Account\Exception\InvalidAccountIdException;
 
 /**
  * This class represents a account's unique ID.
  */
-final class AccountId extends UniqueIdValueObject
+final class AccountId extends IncrementalIdValueObject
 {
     /**
 	 * {@inheritDoc}
