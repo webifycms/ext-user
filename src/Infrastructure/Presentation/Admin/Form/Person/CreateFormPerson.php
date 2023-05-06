@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Infrastructure\Presentation\Admin\Form\Person;
+namespace Webify\User\Infrastructure\Presentation\Admin\Form\Person;
 
-use OneCMS\Base\Domain\Service\Uuid\UuidServiceInterface;
-use OneCMS\Base\Infrastructure\Framework\Form\FormModel;
-use OneCMS\User\Application\Person\Action\CreatePersonAction;
-use OneCMS\User\Application\Person\Request\CreatePersonRequest;
-use OneCMS\User\Application\Person\Repository\PersonRepositoryInterface;
+use Webify\Base\Domain\Service\Uuid\UuidServiceInterface;
+use Webify\Base\Infrastructure\Framework\Form\FormModel;
+use Webify\User\Application\Person\Action\CreatePersonAction;
+use Webify\User\Application\Person\Request\CreatePersonRequest;
+use Webify\User\Application\Person\Repository\PersonRepositoryInterface;
 use Throwable;
 use Yii;
 

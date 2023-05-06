@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Account;
+namespace Webify\User\Domain\Model\Account;
 
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountId;
+use Webify\User\Domain\Model\Account\ValueObject\AccountId;
 
 /**
  * Undocumented interface.

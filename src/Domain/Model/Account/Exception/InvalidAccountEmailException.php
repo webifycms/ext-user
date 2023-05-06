@@ -1,18 +1,18 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Account\Exception;
+namespace Webify\User\Domain\Model\Account\Exception;
 
-use OneCMS\Base\Domain\Exception\TranslatableInvalidArgumentException;
+use Webify\Base\Domain\Exception\TranslatableInvalidArgumentException;
 
 /**
  * Invalid account email exception.

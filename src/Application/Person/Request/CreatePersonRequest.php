@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Application\Person\Request;
+namespace Webify\User\Application\Person\Request;
 
 /**
  * CreatePersonRequest class is a simple data transfer object.

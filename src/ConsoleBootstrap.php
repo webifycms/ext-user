@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User;
+namespace Webify\User;
 
-use OneCMS\Base\Infrastructure\Service\Bootstrap\ConsoleBootstrapService;
-use OneCMS\Base\Infrastructure\Service\Bootstrap\RegisterControllersBootstrapInterface;
+use Webify\Base\Infrastructure\Service\Bootstrap\ConsoleBootstrapService;
+use Webify\Base\Infrastructure\Service\Bootstrap\RegisterControllersBootstrapInterface;
 
 /**
  * ConsoleBootstrap
  *
- * @package getonecms/ext-user
+ * @package webifycms/ext-user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen
@@ -33,7 +33,7 @@ class ConsoleBootstrap extends ConsoleBootstrapService implements RegisterContro
                 'migrationPath' => '@User/src/Infrastructure/Console/Migration', //null,
                 'migrationTable' => 'migration_user',
                 // 'migrationNamespaces' => [
-                //     'OneCMS\User\Infrastructure\Framework\Console\Migration'
+                //     'Webify\User\Infrastructure\Framework\Console\Migration'
                 // ]
             ],
         ];

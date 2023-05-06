@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Application\Person\Factory;
+namespace Webify\User\Application\Person\Factory;
 
-use OneCMS\Base\Domain\Service\Uuid\UuidServiceInterface;
-use OneCMS\Base\Domain\ValueObject\DateTimeValueObject;
-use OneCMS\Base\Domain\ValueObject\TimestampValueObject;
-use OneCMS\Base\Domain\ValueObject\RecycleValueObject;
-use OneCMS\User\Domain\Model\Person\Person;
-use OneCMS\User\Domain\Model\Person\PersonId;
+use Webify\Base\Domain\Service\Uuid\UuidServiceInterface;
+use Webify\Base\Domain\ValueObject\DateTimeValueObject;
+use Webify\Base\Domain\ValueObject\TimestampValueObject;
+use Webify\Base\Domain\ValueObject\RecycleValueObject;
+use Webify\User\Domain\Model\Person\Person;
+use Webify\User\Domain\Model\Person\PersonId;
 
 /**
  * PersonFactory to build Person entity.

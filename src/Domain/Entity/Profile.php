@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Entity;
+namespace Webify\User\Domain\Entity;
 
-use OneCMS\User\Domain\ValueObject\PersonId;
+use Webify\User\Domain\ValueObject\PersonId;
 
 /**
  * Class Profile
  *
- * @package getonecms/user
+ * @package webifycms/user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen

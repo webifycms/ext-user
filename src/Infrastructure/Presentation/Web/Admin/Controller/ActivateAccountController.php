@@ -1,19 +1,19 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Infrastructure\Presentation\Web\Admin\Controller;
+namespace Webify\User\Infrastructure\Presentation\Web\Admin\Controller;
 
-use OneCMS\User\Application\Account\Action\ActivateAccountAction;
-use OneCMS\User\Application\Account\Request\ActivateAccountRequest;
+use Webify\User\Application\Account\Action\ActivateAccountAction;
+use Webify\User\Application\Account\Request\ActivateAccountRequest;
 use yii\base\Module;
 use yii\web\Controller;
 

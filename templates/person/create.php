@@ -1,6 +1,6 @@
 <?php
 
-use OneCMS\User\Infrastructure\Presentation\Admin\Form\Person\CreateFormPerson;
+use Webify\User\Infrastructure\Presentation\Admin\Form\Person\CreateFormPerson;
 
 /**
  * @var CreateFormPerson $form

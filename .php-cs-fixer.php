@@ -5,7 +5,7 @@ declare(strict_types=1);
 // should require the composer autoloader on first
 require __DIR__ . '/vendor/autoload.php';
 
-use OneCMS\Tools\Fixer;
+use Webify\Tools\Fixer;
 use PhpCsFixer\Finder;
 
 $finder = Finder::create()

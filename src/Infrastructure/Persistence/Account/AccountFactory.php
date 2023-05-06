@@ -1,10 +1,10 @@
 <?php
 
-namespace OneCMS\User\Infrastructure\Persistance\Account;
+namespace Webify\User\Infrastructure\Persistance\Account;
 
-use OneCMS\User\Domain\Model\Account\Account;
-use OneCMS\User\Domain\Model\Account\AccountFactoryInterface;
-use OneCMS\Base\Domain\Service\IdentityServiceInterface;
+use Webify\User\Domain\Model\Account\Account;
+use Webify\User\Domain\Model\Account\AccountFactoryInterface;
+use Webify\Base\Domain\Service\IdentityServiceInterface;
 
 /**
  * AccountFactory class implementation.
