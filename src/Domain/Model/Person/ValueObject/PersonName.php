@@ -1,18 +1,18 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Person\ValueObject;
+namespace Webify\User\Domain\Model\Person\ValueObject;
 
-use OneCMS\User\Domain\Model\Person\Exception\InvalidPersonNameException;
+use Webify\User\Domain\Model\Person\Exception\InvalidPersonNameException;
 
 /**
  * It's a value object that represents a person's first and last name.

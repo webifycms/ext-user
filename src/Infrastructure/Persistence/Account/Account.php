@@ -1,11 +1,11 @@
 <?php
 
-namespace OneCMS\User\Infrastructure\Persistance\Account;
+namespace Webify\User\Infrastructure\Persistance\Account;
 
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\ActiveQuery;
-use OneCMS\User\Infrastructure\Persistance\Person\Person;
+use Webify\User\Infrastructure\Persistance\Person\Person;
 
 /**
  * This is the model class for table "{{%account}}".

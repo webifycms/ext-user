@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Application\Person\Action;
+namespace Webify\User\Application\Person\Action;
 
-use OneCMS\Base\Domain\Service\Uuid\UuidServiceInterface;
-use OneCMS\User\Application\Person\Request\CreatePersonRequest;
-use OneCMS\User\Application\Person\Factory\PersonFactory;
-use OneCMS\User\Application\Person\Repository\PersonRepositoryInterface;
+use Webify\Base\Domain\Service\Uuid\UuidServiceInterface;
+use Webify\User\Application\Person\Request\CreatePersonRequest;
+use Webify\User\Application\Person\Factory\PersonFactory;
+use Webify\User\Application\Person\Repository\PersonRepositoryInterface;
 
 /**
  * Class CreatePersonAction
  *
- * @package getonecms/user
+ * @package webifycms/user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen

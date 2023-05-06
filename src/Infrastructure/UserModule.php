@@ -1,13 +1,13 @@
 <?php
 
-namespace OneCMS\User\Infrastructure;
+namespace Webify\User\Infrastructure;
 
 use yii\base\Module;
 
 /**
  * Class UserModule
  *
- * @package getonecms/user
+ * @package webifycms/user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen
@@ -18,7 +18,7 @@ class UserModule extends Module
 
     public $layout = 'main';
 
-    public $controllerNamespace = 'OneCMS\\User\\Infrastructure\\Presentation\\Admin\\Controller';
+    public $controllerNamespace = 'Webify\\User\\Infrastructure\\Presentation\\Admin\\Controller';
 
     /**
      * @inheritDoc

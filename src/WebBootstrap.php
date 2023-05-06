@@ -1,27 +1,27 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User;
+namespace Webify\User;
 
-use OneCMS\Base\Infrastructure\Service\Bootstrap\RegisterDependencyBootstrapInterface;
-use OneCMS\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
-use OneCMS\User\Domain\Service\HashServiceInterface;
-use OneCMS\User\Infrastructure\Service\PasswordHash\HashService;
-use OneCMS\User\Infrastructure\UserModule;
+use Webify\Base\Infrastructure\Service\Bootstrap\RegisterDependencyBootstrapInterface;
+use Webify\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
+use Webify\User\Domain\Service\HashServiceInterface;
+use Webify\User\Infrastructure\Service\PasswordHash\HashService;
+use Webify\User\Infrastructure\UserModule;
 
 /**
  * {@inheritDoc}
  */
-class WebBootstrap extends WebBootstrapService implements RegisterDependencyBootstrapInterface
+final class WebBootstrap extends WebBootstrapService implements RegisterDependencyBootstrapInterface
 {
 	/**
 	 * {@inheritdoc}

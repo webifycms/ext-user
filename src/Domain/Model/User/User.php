@@ -1,27 +1,27 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\User;
+namespace Webify\User\Domain\Model\User;
 
-use OneCMS\Base\Domain\Exception\TranslatableRuntimeException;
-use OneCMS\Base\Domain\Model\RecyclableModelInterface;
-use OneCMS\Base\Domain\ValueObject\DateTimeValueObject;
-use OneCMS\User\Domain\Model\Account\Account;
-use OneCMS\User\Domain\Model\Account\ActivatedAccount;
-use OneCMS\User\Domain\Model\Account\BlockedAccount;
-use OneCMS\User\Domain\Model\Account\PendingAccount;
-use OneCMS\User\Domain\Model\Account\ValueObject\UserIdValueObject;
-use OneCMS\User\Domain\Model\Person\Person;
-use OneCMS\User\Domain\Model\User\ValueObject\UserUniqueIdValueObject;
+use Webify\Base\Domain\Exception\TranslatableRuntimeException;
+use Webify\Base\Domain\Model\RecyclableModelInterface;
+use Webify\Base\Domain\ValueObject\DateTimeValueObject;
+use Webify\User\Domain\Model\Account\Account;
+use Webify\User\Domain\Model\Account\ActivatedAccount;
+use Webify\User\Domain\Model\Account\BlockedAccount;
+use Webify\User\Domain\Model\Account\PendingAccount;
+use Webify\User\Domain\Model\Account\ValueObject\UserIdValueObject;
+use Webify\User\Domain\Model\Person\Person;
+use Webify\User\Domain\Model\User\ValueObject\UserUniqueIdValueObject;
 
 /**
  * User aggregate root.

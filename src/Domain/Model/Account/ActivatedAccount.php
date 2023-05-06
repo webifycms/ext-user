@@ -1,26 +1,26 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Account;
+namespace Webify\User\Domain\Model\Account;
 
-use OneCMS\User\Domain\Model\Account\Factory\BlockedAccountFactory;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountActivationHashValueObject;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountEmail;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountId;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountPassword;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountPasswordHash;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountRegisteredIpValueObject;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountStatusValueObject;
-use OneCMS\User\Domain\Model\Account\ValueObject\AccountUsername;
+use Webify\User\Domain\Model\Account\Factory\BlockedAccountFactory;
+use Webify\User\Domain\Model\Account\ValueObject\AccountActivationHashValueObject;
+use Webify\User\Domain\Model\Account\ValueObject\AccountEmail;
+use Webify\User\Domain\Model\Account\ValueObject\AccountId;
+use Webify\User\Domain\Model\Account\ValueObject\AccountPassword;
+use Webify\User\Domain\Model\Account\ValueObject\AccountPasswordHash;
+use Webify\User\Domain\Model\Account\ValueObject\AccountRegisteredIpValueObject;
+use Webify\User\Domain\Model\Account\ValueObject\AccountStatusValueObject;
+use Webify\User\Domain\Model\Account\ValueObject\AccountUsername;
 
 /**
  * Entity class that have the state of activated and represents as activated account.
@@ -65,7 +65,7 @@ final class ActivatedAccount extends Account
 
 	/**
 	 * Block the account.
-	 * Only activated account can be block.
+	 * Only activated account can be blocked.
 	 */
 	public function block(): BlockedAccount
 	{

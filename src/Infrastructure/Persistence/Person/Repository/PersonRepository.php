@@ -1,16 +1,16 @@
 <?php
 
-namespace OneCMS\User\Infrastructure\Persistence\Person\Repository;
+namespace Webify\User\Infrastructure\Persistence\Person\Repository;
 
 use DateTimeInterface;
-use OneCMS\User\Application\Person\Repository\PersonRepositoryInterface;
-use OneCMS\User\Domain\Model\Person\Person;
-use OneCMS\User\Infrastructure\Persistence\Person\Model\PersonModel;
+use Webify\User\Application\Person\Repository\PersonRepositoryInterface;
+use Webify\User\Domain\Model\Person\Person;
+use Webify\User\Infrastructure\Persistence\Person\Model\PersonModel;
 
 /**
  * Class PersonRepository
  *
- * @package getonecms/user
+ * @package webifycms/user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen

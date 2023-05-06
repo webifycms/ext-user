@@ -15,19 +15,19 @@ namespace Webify\User\Domain\Model\Person\Exception;
 use Webify\Base\Domain\Exception\TranslatableInvalidArgumentException;
 
 /**
- * Exception class can be use when validating person name.
+ * Exception class can be use when validating email.
  */
-final class InvalidPersonNameException extends TranslatableInvalidArgumentException
+final class InvalidPersonEmailException extends TranslatableInvalidArgumentException
 {
-	/**
-	 * The class constructor.
-	 *
-	 * @param mixed[] $params
-	 */
-	public function __construct(
-		string $messageKey = 'invalid_person_name',
-		array $params = []
-	) {
-		parent::__construct($messageKey, $params);
-	}
+    /**
+     * The class constructor.
+     *
+     * @param array<string, string> $params
+     */
+    public function __construct(
+        string $messageKey = 'invalid_person_email',
+        array $params = []
+    ) {
+        parent::__construct($messageKey, $params);
+    }
 }
