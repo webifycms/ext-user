@@ -1,26 +1,26 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Domain\Model\Person;
+namespace Webify\User\Domain\Model\Person;
 
-use OneCMS\User\Domain\Model\Person\ValueObject\PersonAddress;
-use OneCMS\User\Domain\Model\Person\ValueObject\PersonEmail;
-use OneCMS\User\Domain\Model\Person\ValueObject\PersonId;
-use OneCMS\User\Domain\Model\Person\ValueObject\PersonName;
+use Webify\User\Domain\Model\Person\ValueObject\PersonAddress;
+use Webify\User\Domain\Model\Person\ValueObject\PersonEmail;
+use Webify\User\Domain\Model\Person\ValueObject\PersonId;
+use Webify\User\Domain\Model\Person\ValueObject\PersonName;
 
 /**
- * It's an entity class that represents a person object and it is an aggregate root.
+ * It's an entity class that represents a person object, and it is an aggregate root.
  */
-abstract class Person
+final class Person
 {
 	/**
 	 * The object constructor.

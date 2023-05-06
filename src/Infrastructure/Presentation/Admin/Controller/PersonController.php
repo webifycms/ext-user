@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Infrastructure\Presentation\Admin\Controller;
+namespace Webify\User\Infrastructure\Presentation\Admin\Controller;
 
-use OneCMS\Base\Domain\Service\Uuid\UuidServiceInterface;
-use OneCMS\User\Infrastructure\Presentation\Admin\Form\Person\CreateFormPerson;
-use OneCMS\User\Application\Person\Repository\PersonRepositoryInterface;
+use Webify\Base\Domain\Service\Uuid\UuidServiceInterface;
+use Webify\User\Infrastructure\Presentation\Admin\Form\Person\CreateFormPerson;
+use Webify\User\Application\Person\Repository\PersonRepositoryInterface;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\base\Module;
@@ -14,7 +14,7 @@ use yii\base\Module;
 /**
  * Class PersonController
  *
- * @package getonecms/user
+ * @package webifycms/user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen

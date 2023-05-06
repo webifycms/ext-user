@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Application\Person\Repository;
+namespace Webify\User\Application\Person\Repository;
 
-use OneCMS\User\Domain\Model\Person\Person;
+use Webify\User\Domain\Model\Person\Person;
 
 /**
  * Class PersonRepositoryInterface
  *
- * @package getonecms/user
+ * @package webifycms/user
  * @version 0.0.1
  * @since   0.0.1
  * @author  Mohammed Shifreen

@@ -10,18 +10,18 @@
  */
 declare(strict_types=1);
 
-namespace Webify\User\Domain\Model\User\ValueObject;
+namespace Webify\User\Domain\Model\Person\ValueObject;
 
 use Webify\Base\Domain\ValueObject\UniqueIdValueObject;
-use Webify\User\Domain\Model\Account\Exception\InvalidAccountIdException;
 
-final class UserUuidValueObject extends UniqueIdValueObject
+final class PersonUidValueObject extends UniqueIdValueObject
 {
+
     /**
-	 * {@inheritDoc}
-	 */
-	protected function throwException(array $params): void
-	{
-		throw new InvalidAccountIdException('invalid_user_uuid', $params);
-	}
+     * @inheritDoc
+     */
+    protected function throwException(array $params): void
+    {
+        // TODO: Implement throwException() method.
+    }
 }

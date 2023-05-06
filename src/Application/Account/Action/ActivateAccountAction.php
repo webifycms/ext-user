@@ -1,21 +1,21 @@
 <?php
 /**
- * The file is part of the "getonecms/ext-user", OneCMS extension package.
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
- * @see https://getonecms.com/extension/user
+ * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 OneCMS
- * @license https://getonecms.com/extension/user/license
+ * @license Copyright (c) 2022 WebifyCMS
+ * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace OneCMS\User\Application\Account\Action;
+namespace Webify\User\Application\Account\Action;
 
-use OneCMS\Base\Domain\Exception\TranslatableRuntimeException;
-use OneCMS\User\Application\Account\Request\ActivateAccountRequest;
-use OneCMS\User\Domain\Model\Account\AccountRepositoryInterface;
-use OneCMS\User\Domain\Model\Account\PendingAccount;
+use Webify\Base\Domain\Exception\TranslatableRuntimeException;
+use Webify\User\Application\Account\Request\ActivateAccountRequest;
+use Webify\User\Domain\Model\Account\AccountRepositoryInterface;
+use Webify\User\Domain\Model\Account\PendingAccount;
 
 /**
  * This is an action to handle activation of an account use case.

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Infrastructure\Persistence\Person\Model;
+namespace Webify\User\Infrastructure\Persistence\Person\Model;
 
 use Yii;
 use yii\db\ActiveQuery;
-use OneCMS\Base\Infrastructure\Persistence\DatabaseModel;
-use OneCMS\User\Infrastructure\Persistance\Account\Account;
+use Webify\Base\Infrastructure\Persistence\DatabaseModel;
+use Webify\User\Infrastructure\Persistance\Account\Account;
 
 /**
  * This is the model class for table "{{%person}}".

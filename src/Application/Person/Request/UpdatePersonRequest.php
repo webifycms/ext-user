@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OneCMS\User\Application\Person\Request;
+namespace Webify\User\Application\Person\Request;
 
-use OneCMS\Base\Domain\ValueObject\TimestampValueObject;
-use OneCMS\User\Domain\Model\Person\PersonId;
+use Webify\Base\Domain\ValueObject\TimestampValueObject;
+use Webify\User\Domain\Model\Person\PersonId;
 
 /**
  * UpdatePersonRequest class is a simple data transfer object.

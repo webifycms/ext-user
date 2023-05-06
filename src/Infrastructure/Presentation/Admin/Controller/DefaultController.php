@@ -1,6 +1,6 @@
 <?php
 
-namespace OneCMS\User\Infrastructure\Presentation\Admin\Controller;
+namespace Webify\User\Infrastructure\Presentation\Admin\Controller;
 
 use yii\web\Controller;
 
