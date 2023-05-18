@@ -17,6 +17,7 @@ use Webify\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
 use Webify\User\Domain\Service\HashServiceInterface;
 use Webify\User\Infrastructure\Service\PasswordHash\HashService;
 use Webify\User\Infrastructure\UserModule;
+use function Webify\Base\Infrastructure\set_alias;
 
 /**
  * {@inheritDoc}
