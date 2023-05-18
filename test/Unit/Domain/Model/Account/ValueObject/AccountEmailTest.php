@@ -12,24 +12,44 @@ declare(strict_types=1);
 
 namespace Webify\User\Test\Unit\Domain\Model\Account\ValueObject;
 
+use PHPUnit\Framework\MockObject\Exception;
+use PHPUnit\Framework\TestCase;
+use Webify\Base\Domain\Service\Validator\EmailValidatorServiceInterface;
 use Webify\User\Domain\Model\Account\Exception\InvalidAccountEmailException;
 use Webify\User\Domain\Model\Account\ValueObject\AccountEmail;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Account email test class.
+ *
+ * @coversDefaultClass \Webify\User\Domain\Model\Account\ValueObject\AccountEmail
+ *
+ * @internal
  */
 final class AccountEmailTest extends TestCase
 {
-    /**
+	private EmailValidatorServiceInterface $validatorService;
+
+	/**
+	 * @throws Exception
+	 */
+	protected function setUp(): void
+	{
+		parent::setUp();
+
+		$this->validatorService = $this->createMock(EmailValidatorServiceInterface::class);
+	}
+
+	/**
 	 * @covers \AccountEmail::create
 	 * @covers \AccountEmail::isValid
 	 */
 	public function testCanBeCreatedWithValidEmailAddress(): void
 	{
-		static::assertInstanceOf(
+        $this->validatorService->method('isValid')
+            ->willReturn(true);
+		$this->assertInstanceOf(
 			AccountEmail::class,
-			AccountEmail::create('test@example.com')
+			AccountEmail::create('info@webifycms.com', $this->validatorService)
 		);
 	}
 
@@ -39,9 +59,11 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCannotBeCreatedWithInvalidEmailAddress(): void
 	{
+        $this->validatorService->method('isValid')
+            ->willReturn(false);
 		$this->expectException(InvalidAccountEmailException::class);
 
-		AccountEmail::create('invalid_email');
+		AccountEmail::create('invalid_email', $this->validatorService);
 	}
 
 	/**
@@ -51,10 +73,13 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCanBeUsedAsString(): void
 	{
-		$email = AccountEmail::create('test@example.com');
+        $this->validatorService->method('isValid')
+            ->willReturn(true);
 
-		static::assertSame(
-			'test@example.com',
+		$email = AccountEmail::create('info@webifycms.com', $this->validatorService);
+
+		$this->assertSame(
+			'info@webifycms.com',
 			(string) $email
 		);
 	}

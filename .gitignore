@@ -21,3 +21,7 @@ composer.phar
 
 # Mac DS_Store Files
 .DS_Store
+
+# ignores cache files
+.php-cs-fixer.cache
+.phpunit.result.cache
