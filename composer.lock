@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "012eb57844e7c0beb4953f40e2669124",
+    "content-hash": "9a78fd432075b2489e8d7125cd57c01f",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -1321,27 +1321,28 @@
         },
         {
             "name": "webifycms/ext-admin",
-            "version": "dev-development",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webifycms/ext-admin.git",
-                "reference": "83fbfc54ceb9a0fb9d6eb8553f87c120cb3de940"
+                "reference": "1fab0cb43aa17a25e91a3588dbec5a4bedcf0ae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webifycms/ext-admin/zipball/83fbfc54ceb9a0fb9d6eb8553f87c120cb3de940",
-                "reference": "83fbfc54ceb9a0fb9d6eb8553f87c120cb3de940",
+                "url": "https://api.github.com/repos/webifycms/ext-admin/zipball/1fab0cb43aa17a25e91a3588dbec5a4bedcf0ae8",
+                "reference": "1fab0cb43aa17a25e91a3588dbec5a4bedcf0ae8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
-                "webifycms/ext-base": "*",
+                "webifycms/ext-base": "dev-main",
                 "yiisoft/yii2": "~2.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^10",
                 "webifycms/dev-tools": "*"
             },
+            "default-branch": true,
             "type": "webifycms-extension",
             "autoload": {
                 "psr-4": {
@@ -1353,6 +1354,20 @@
                     "Webify\\Admin\\Test\\": "test"
                 }
             },
+            "scripts": {
+                "code-sniff": [
+                    "php-cs-fixer fix --verbose --dry-run --diff --show-progress=dots --using-cache=no"
+                ],
+                "code-format": [
+                    "php-cs-fixer fix --verbose --show-progress=dots"
+                ],
+                "code-analyze": [
+                    "phpstan"
+                ],
+                "test": [
+                    "phpunit --testdox test"
+                ]
+            },
             "authors": [
                 {
                     "name": "Mohammed Shifreen",
@@ -1361,23 +1376,23 @@
             ],
             "description": "WebifyCMS admin extension",
             "support": {
-                "source": "https://github.com/webifycms/ext-admin/tree/development",
+                "source": "https://github.com/webifycms/ext-admin/tree/main",
                 "issues": "https://github.com/webifycms/ext-admin/issues"
             },
-            "time": "2023-05-05T18:42:53+00:00"
+            "time": "2023-05-18T07:13:06+00:00"
         },
         {
             "name": "webifycms/ext-base",
-            "version": "dev-development",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webifycms/ext-base.git",
-                "reference": "4e0b3b1bb4d0ae932d7202832b765b5046a2491e"
+                "reference": "57360d474bf2c315975d73b0ac2bbcd5d7aad357"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webifycms/ext-base/zipball/4e0b3b1bb4d0ae932d7202832b765b5046a2491e",
-                "reference": "4e0b3b1bb4d0ae932d7202832b765b5046a2491e",
+                "url": "https://api.github.com/repos/webifycms/ext-base/zipball/57360d474bf2c315975d73b0ac2bbcd5d7aad357",
+                "reference": "57360d474bf2c315975d73b0ac2bbcd5d7aad357",
                 "shasum": ""
             },
             "require": {
@@ -1390,6 +1405,7 @@
                 "phpunit/phpunit": "^10",
                 "webifycms/dev-tools": "*"
             },
+            "default-branch": true,
             "type": "webifycms-extension",
             "autoload": {
                 "psr-4": {
@@ -1413,6 +1429,9 @@
                 ],
                 "code-analyze": [
                     "phpstan"
+                ],
+                "test": [
+                    "phpunit --testdox test"
                 ]
             },
             "authors": [
@@ -1423,10 +1442,10 @@
             ],
             "description": "WebifyCMS base extension.",
             "support": {
-                "source": "https://github.com/webifycms/ext-base/tree/development",
+                "source": "https://github.com/webifycms/ext-base/tree/main",
                 "issues": "https://github.com/webifycms/ext-base/issues"
             },
-            "time": "2023-05-05T17:39:37+00:00"
+            "time": "2023-05-09T18:36:57+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -2331,16 +2350,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.14",
+            "version": "1.10.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d232901b09e67538e5c86a724be841bea5768a7c"
+                "reference": "762c4dac4da6f8756eebb80e528c3a47855da9bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d232901b09e67538e5c86a724be841bea5768a7c",
-                "reference": "d232901b09e67538e5c86a724be841bea5768a7c",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/762c4dac4da6f8756eebb80e528c3a47855da9bd",
+                "reference": "762c4dac4da6f8756eebb80e528c3a47855da9bd",
                 "shasum": ""
             },
             "require": {
@@ -2389,7 +2408,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-19T13:47:27+00:00"
+            "time": "2023-05-09T15:28:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2471,16 +2490,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "fd9329ab3368f59fe1fe808a189c51086bd4b6bd"
+                "reference": "5647d65443818959172645e7ed999217360654b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/fd9329ab3368f59fe1fe808a189c51086bd4b6bd",
-                "reference": "fd9329ab3368f59fe1fe808a189c51086bd4b6bd",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/5647d65443818959172645e7ed999217360654b6",
+                "reference": "5647d65443818959172645e7ed999217360654b6",
                 "shasum": ""
             },
             "require": {
@@ -2519,7 +2538,8 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-file-iterator/issues",
-                "source": "https://github.com/sebastianbergmann/php-file-iterator/tree/4.0.1"
+                "security": "https://github.com/sebastianbergmann/php-file-iterator/security/policy",
+                "source": "https://github.com/sebastianbergmann/php-file-iterator/tree/4.0.2"
             },
             "funding": [
                 {
@@ -2527,7 +2547,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-10T16:53:14+00:00"
+            "time": "2023-05-07T09:13:23+00:00"
         },
         {
             "name": "phpunit/php-invoker",
@@ -2712,16 +2732,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.1.2",
+            "version": "10.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6f0cd95be71add539f8fd2be25b2a4a29789000b"
+                "reference": "2379ebafc1737e71cdc84f402acb6b7f04198b9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6f0cd95be71add539f8fd2be25b2a4a29789000b",
-                "reference": "6f0cd95be71add539f8fd2be25b2a4a29789000b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2379ebafc1737e71cdc84f402acb6b7f04198b9d",
+                "reference": "2379ebafc1737e71cdc84f402acb6b7f04198b9d",
                 "shasum": ""
             },
             "require": {
@@ -2793,7 +2813,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.1.2"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.1.3"
             },
             "funding": [
                 {
@@ -2809,7 +2829,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-22T07:38:19+00:00"
+            "time": "2023-05-11T05:16:22+00:00"
         },
         {
             "name": "psr/cache",
