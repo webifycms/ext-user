@@ -17,6 +17,7 @@ use Webify\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
 use Webify\User\Domain\Service\HashServiceInterface;
 use Webify\User\Infrastructure\Service\PasswordHash\HashService;
 use Webify\User\Infrastructure\UserModule;
+
 use function Webify\Base\Infrastructure\set_alias;
 
 /**
@@ -31,12 +32,11 @@ final class WebBootstrap extends WebBootstrapService implements RegisterDependen
 	{
 		set_alias('@User', \dirname(__DIR__));
 
-		$adminPath = $this->getApplicationService()->getAdministration()->getPath();
+		$adminPath = $this->getApplicationService()->getAdministrationPath();
 
 		$this->getApplication()->getModule($adminPath)->setModule('user', [
 			'class' => UserModule::class,
 		]);
-		$this->registerAdminMenuItems($adminPath);
 		$this->registerTranslations();
 	}
 
@@ -48,21 +48,6 @@ final class WebBootstrap extends WebBootstrapService implements RegisterDependen
 		return [
 			HashServiceInterface::class => HashService::class,
 		];
-	}
-
-	/**
-	 * Register user extension's admin menu items.
-	 */
-	private function registerAdminMenuItems(string $adminPath): void
-	{
-		$this->getApplicationService()->getAdministration()->setMenuItems([
-			[
-				'label'    => 'Users',
-				'icon'     => 'person-square',
-				'route'    => ["/{$adminPath}/user"],
-				'position' => 1,
-			],
-		]);
 	}
 
 	/**
