@@ -20,9 +20,6 @@ use Webify\Base\Domain\ValueObject\IncrementalIdValueObject;
  */
 final class UserIdValueObject extends IncrementalIdValueObject
 {
-	/**
-	 * {@inheritDoc}
-	 */
 	protected function throwException(array $params): void
 	{
 		throw new TranslatableInvalidArgumentException('invalid_user_id');

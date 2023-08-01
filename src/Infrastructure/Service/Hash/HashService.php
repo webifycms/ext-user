@@ -10,13 +10,13 @@
  */
 declare(strict_types=1);
 
-namespace Webify\User\Infrastructure\Service\PasswordHash;
+namespace Webify\User\Infrastructure\Service\Hash;
 
 use Webify\User\Domain\Service\HashServiceInterface;
 use yii\base\Security;
 
 /**
- * Hash service implementation.
+ * Hash service implementation that depends on Yii framework security component.
  */
 final class HashService implements HashServiceInterface
 {
@@ -27,17 +27,11 @@ final class HashService implements HashServiceInterface
 	{
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function generateHash(string $string): string
 	{
 		return $this->securityComponent->generatePasswordHash($string);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function validatesHash(string $string, string $hash): bool
 	{
 		return $this->securityComponent->validatePassword($string, $hash);

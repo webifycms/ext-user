@@ -54,7 +54,7 @@ final class AccountUsername
 	 */
 	public static function createFrom(string $username): static
 	{
-		return new static($username);
+		return new self($username);
 	}
 
 	/**

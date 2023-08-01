@@ -26,9 +26,6 @@ final class PendingAccount extends Account
 	 */
 	private AccountStatusValueObject $status = AccountStatusValueObject::PENDING;
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function getStatus(): string
 	{
 		return $this->status->value;

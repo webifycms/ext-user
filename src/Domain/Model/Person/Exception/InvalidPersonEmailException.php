@@ -19,15 +19,15 @@ use Webify\Base\Domain\Exception\TranslatableInvalidArgumentException;
  */
 final class InvalidPersonEmailException extends TranslatableInvalidArgumentException
 {
-    /**
-     * The class constructor.
-     *
-     * @param array<string, string> $params
-     */
-    public function __construct(
-        string $messageKey = 'invalid_person_email',
-        array $params = []
-    ) {
-        parent::__construct($messageKey, $params);
-    }
+	/**
+	 * The class constructor.
+	 *
+	 * @param array<string, string> $params
+	 */
+	public function __construct(
+		string $messageKey = 'invalid_person_email',
+		array $params = []
+	) {
+		parent::__construct($messageKey, $params);
+	}
 }

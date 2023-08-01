@@ -14,5 +14,5 @@ namespace Webify\User\Domain\Model\Account\Interface;
 
 interface AccountStatusInterface
 {
-    public function pending(): void;
+	public function pending(): void;
 }

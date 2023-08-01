@@ -51,7 +51,7 @@ final class AccountPassword
 	 */
 	public static function createFrom(string $password): static
 	{
-		return new static($password);
+		return new self($password);
 	}
 
 	/**

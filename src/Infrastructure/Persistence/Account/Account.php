@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Webify\User\Infrastructure\Persistence\Account;
 
-use Webify\User\Infrastructure\Persistence\Person\Person;
+use Webify\User\Infrastructure\Persistence\Person\PersonModel;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
@@ -30,6 +30,9 @@ class Account extends ActiveRecord
 		return '{{%account}}';
 	}
 
+	/**
+	 * @return array<array<mixed>>
+	 */
 	public function rules(): array
 	{
 		return [
@@ -43,10 +46,13 @@ class Account extends ActiveRecord
 			[['password_hash'], 'unique'],
 			[['validation_token'], 'unique'],
 			[['activation_token'], 'unique'],
-			[['person_id'], 'exist', 'skipOnError' => true, 'targetClass' => Person::class, 'targetAttribute' => ['person_id' => 'id']],
+			[['person_id'], 'exist', 'skipOnError' => true, 'targetClass' => PersonModel::class, 'targetAttribute' => ['person_id' => 'id']],
 		];
 	}
 
+	/**
+	 * @return array<string, string>
+	 */
 	public function attributeLabels(): array
 	{
 		return [
@@ -68,6 +74,6 @@ class Account extends ActiveRecord
 	 */
 	public function getPerson(): ActiveQuery
 	{
-		return $this->hasOne(Person::class, ['id' => 'person_id']);
+		return $this->hasOne(PersonModel::class, ['id' => 'person_id']);
 	}
 }

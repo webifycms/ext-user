@@ -55,9 +55,6 @@ final class ActivatedAccount extends Account
 		return $this->activatedAt->format($format);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function getStatus(): string
 	{
 		return $this->status->value;

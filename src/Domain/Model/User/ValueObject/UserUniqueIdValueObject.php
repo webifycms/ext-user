@@ -20,9 +20,6 @@ use Webify\User\Domain\Model\Account\Exception\InvalidAccountIdException;
  */
 final class UserUniqueIdValueObject extends UniqueIdValueObject
 {
-	/**
-	 * {@inheritDoc}
-	 */
 	protected function throwException(array $params): void
 	{
 		throw new InvalidAccountIdException('invalid_user_unique_id', $params);

@@ -12,32 +12,32 @@ use Webify\User\Domain\Model\Person\PersonId;
  */
 class UpdatePersonRequest
 {
-    public function __construct(
-        private readonly PersonId $personId,
-        private readonly string $firstName,
-        private readonly string $lastName,
-        private readonly TimestampValueObject $timestamp,
-    ) {
-        # code...
-    }
+	public function __construct(
+		private readonly PersonId $personId,
+		private readonly string $firstName,
+		private readonly string $lastName,
+		private readonly TimestampValueObject $timestamp,
+	) {
+		// code...
+	}
 
-    public function getPersonId(): PersonId
-    {
-        return $this->personId;
-    }
+	public function getPersonId(): PersonId
+	{
+		return $this->personId;
+	}
 
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
+	public function getFirstName(): string
+	{
+		return $this->firstName;
+	}
 
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
+	public function getLastName(): string
+	{
+		return $this->lastName;
+	}
 
-    public function getTimestamp(): TimestampValueObject
-    {
-        return $this->timestamp;
-    }
+	public function getTimestamp(): TimestampValueObject
+	{
+		return $this->timestamp;
+	}
 }

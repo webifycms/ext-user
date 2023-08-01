@@ -15,19 +15,13 @@ namespace Webify\User;
 use Webify\Base\Infrastructure\Service\Bootstrap\RegisterDependencyBootstrapInterface;
 use Webify\Base\Infrastructure\Service\Bootstrap\WebBootstrapService;
 use Webify\User\Domain\Service\HashServiceInterface;
-use Webify\User\Infrastructure\Service\PasswordHash\HashService;
+use Webify\User\Infrastructure\Service\Hash\HashService;
 use Webify\User\Infrastructure\UserModule;
 
 use function Webify\Base\Infrastructure\set_alias;
 
-/**
- * {@inheritDoc}
- */
 final class WebBootstrap extends WebBootstrapService implements RegisterDependencyBootstrapInterface
 {
-	/**
-	 * {@inheritdoc}
-	 */
 	public function init(): void
 	{
 		set_alias('@User', \dirname(__DIR__));
@@ -40,9 +34,6 @@ final class WebBootstrap extends WebBootstrapService implements RegisterDependen
 		$this->registerTranslations();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function dependencies(): array
 	{
 		return [

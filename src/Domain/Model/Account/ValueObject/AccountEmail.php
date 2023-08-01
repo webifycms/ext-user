@@ -20,9 +20,6 @@ use Webify\User\Domain\Model\Account\Exception\InvalidAccountEmailException;
  */
 final class AccountEmail extends EmailValueObject
 {
-	/**
-	 * {@inheritDoc}
-	 */
 	protected function throwException(array $params): void
 	{
 		throw new InvalidAccountEmailException('invalid_account_email', $params);

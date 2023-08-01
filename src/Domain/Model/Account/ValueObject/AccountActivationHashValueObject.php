@@ -52,7 +52,7 @@ final class AccountActivationHashValueObject
 		string $string,
 		HashServiceInterface $hashService
 	): static {
-		return new static($hashService->generateHash($string), $string, $hashService);
+		return new self($hashService->generateHash($string), $string, $hashService);
 	}
 
 	/**

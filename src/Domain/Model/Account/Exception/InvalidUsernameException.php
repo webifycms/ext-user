@@ -16,7 +16,7 @@ namespace Webify\User\Domain\Model\Account\Exception;
 use Webify\Base\Domain\Exception\TranslatableInvalidArgumentException;
 
 /**
- * Invalid username exception class
+ * Invalid username exception class.
  */
 final class InvalidUsernameException extends TranslatableInvalidArgumentException
 {

@@ -52,7 +52,7 @@ final class AccountPasswordHash
 		string $password,
 		HashServiceInterface $hashService
 	): static {
-		return new static($hashService->generateHash($password), $password, $hashService);
+		return new self($hashService->generateHash($password), $password, $hashService);
 	}
 
 	/**

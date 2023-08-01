@@ -45,8 +45,9 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCanBeCreatedWithValidEmailAddress(): void
 	{
-        $this->validatorService->method('isValid')
-            ->willReturn(true);
+		$this->validatorService->method('isValid')
+			->willReturn(true)
+		;
 		$this->assertInstanceOf(
 			AccountEmail::class,
 			AccountEmail::create('info@webifycms.com', $this->validatorService)
@@ -59,8 +60,9 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCannotBeCreatedWithInvalidEmailAddress(): void
 	{
-        $this->validatorService->method('isValid')
-            ->willReturn(false);
+		$this->validatorService->method('isValid')
+			->willReturn(false)
+		;
 		$this->expectException(InvalidAccountEmailException::class);
 
 		AccountEmail::create('invalid_email', $this->validatorService);
@@ -73,8 +75,9 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCanBeUsedAsString(): void
 	{
-        $this->validatorService->method('isValid')
-            ->willReturn(true);
+		$this->validatorService->method('isValid')
+			->willReturn(true)
+		;
 
 		$email = AccountEmail::create('info@webifycms.com', $this->validatorService);
 

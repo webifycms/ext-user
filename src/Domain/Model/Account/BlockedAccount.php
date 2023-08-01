@@ -64,9 +64,6 @@ final class BlockedAccount extends Account
 		return $this->blockedAt->format($format);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function getStatus(): string
 	{
 		return $this->status->value;

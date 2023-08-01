@@ -101,17 +101,11 @@ final class User implements RecyclableModelInterface
 		throw new TranslatableRuntimeException('user_not_in_trash', []);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function isInTrash(): bool
 	{
 		return $this->trashedAt instanceof \DateTimeInterface;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	public function getTrashedAt(string $format): ?string
 	{
 		if ($this->isInTrash()) {

@@ -19,9 +19,6 @@ use Webify\Base\Domain\Exception\TranslatableInvalidArgumentException;
  */
 final class InvalidAccountIdException extends TranslatableInvalidArgumentException
 {
-	/**
-	 * {@inheritDoc}
-	 */
 	public function __construct(
 		string $messageKey = 'invalid_account_id',
 		array $params = []

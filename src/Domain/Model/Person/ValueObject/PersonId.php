@@ -20,9 +20,6 @@ use Webify\User\Domain\Model\Account\Exception\InvalidAccountIdException;
  */
 final class PersonId extends IncrementalIdValueObject
 {
-	/**
-	 * {@inheritDoc}
-	 */
 	protected function throwException(array $params): void
 	{
 		throw new InvalidAccountIdException('invalid_person_id', $params);

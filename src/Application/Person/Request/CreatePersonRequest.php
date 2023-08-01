@@ -9,20 +9,20 @@ namespace Webify\User\Application\Person\Request;
  */
 class CreatePersonRequest
 {
-    public function __construct(
-        private readonly string $firstName,
-        private readonly string $lastName,
-    ) {
-        # code...
-    }
+	public function __construct(
+		private readonly string $firstName,
+		private readonly string $lastName,
+	) {
+		// code...
+	}
 
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
+	public function getFirstName(): string
+	{
+		return $this->firstName;
+	}
 
-    public function getLastName(): string
-    {
-        return $this->lastName;
-    }
+	public function getLastName(): string
+	{
+		return $this->lastName;
+	}
 }

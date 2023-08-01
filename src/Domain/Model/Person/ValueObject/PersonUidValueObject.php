@@ -16,12 +16,8 @@ use Webify\Base\Domain\ValueObject\UniqueIdValueObject;
 
 final class PersonUidValueObject extends UniqueIdValueObject
 {
-
-    /**
-     * @inheritDoc
-     */
-    protected function throwException(array $params): void
-    {
-        // TODO: Implement throwException() method.
-    }
+	protected function throwException(array $params): void
+	{
+		// TODO: Implement throwException() method.
+	}
 }

@@ -18,14 +18,8 @@ use yii\console\controllers\MigrateController;
 
 use function Webify\Base\Infrastructure\set_alias;
 
-/**
- * {@inheritDoc}
- */
 final class ConsoleBootstrap extends ConsoleBootstrapService implements RegisterControllersBootstrapInterface
 {
-	/**
-	 * {@inheritDoc}
-	 */
 	public function init(): void
 	{
 		set_alias('@User', \dirname(__DIR__));
