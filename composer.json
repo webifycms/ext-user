@@ -1,6 +1,6 @@
 {
     "name": "webifycms/ext-user",
-    "description": "WebifyCMS user extension",
+    "description": "The WebifyCMS user extension handles all user-related tasks, including user management, profile and account management, login, and registration.",
     "type": "webifycms-extension",
     "authors": [
         {
