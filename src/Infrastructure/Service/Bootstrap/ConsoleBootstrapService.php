@@ -17,6 +17,8 @@ use Webify\Base\Domain\Service\Dependency\DependencyServiceInterface;
 use Webify\Base\Infrastructure\Service\Application\ApplicationServiceInterface;
 use Webify\Base\Infrastructure\Service\Application\ConsoleApplicationServiceInterface;
 use Webify\Base\Infrastructure\Service\Bootstrap\BaseConsoleBootstrapService;
+use Webify\Base\Infrastructure\Service\Bootstrap\RegisterControllersBootstrapInterface;
+use yii\console\controllers\MigrateController;
 use function Webify\Base\Infrastructure\set_alias;
 
 /**
@@ -24,7 +26,7 @@ use function Webify\Base\Infrastructure\set_alias;
  * Extends the base functionality provided by BaseConsoleBootstrapService
  * and implements the necessary interface for registering controllers.
  */
-final class ConsoleBootstrapService extends BaseConsoleBootstrapService
+final class ConsoleBootstrapService extends BaseConsoleBootstrapService implements RegisterControllersBootstrapInterface
 {
     /**
      * The class construct.
@@ -45,4 +47,17 @@ final class ConsoleBootstrapService extends BaseConsoleBootstrapService
 	{
 
 	}
+
+    /**
+     * @inheritDoc
+     */
+    public function controllers(): array
+    {
+        return [
+            'migrate-user' => [
+                'class'          => MigrateController::class,
+                'migrationPath'  => '@User/database/migrations',
+            ],
+        ];
+    }
 }
