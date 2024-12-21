@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -37,8 +38,7 @@ final class User implements RecyclableModelInterface
 		public Person $person,
 		public ?Account $account = null,
 		private ?\DateTimeInterface $trashedAt = null
-	) {
-	}
+	) {}
 
 	/**
 	 * Activate user account.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -20,6 +21,7 @@ use Webify\Base\Infrastructure\Service\Bootstrap\BaseWebBootstrapService;
 use Webify\Base\Infrastructure\Service\Bootstrap\RegisterDependencyBootstrapInterface;
 use Webify\Base\Infrastructure\Service\Bootstrap\RegisterRoutesBootstrapInterface;
 use Webify\User\Infrastructure\UserModule;
+
 use function Webify\Admin\Infrastructure\administration_path;
 use function Webify\Base\Infrastructure\get_alias;
 use function Webify\Base\Infrastructure\set_alias;
@@ -30,54 +32,43 @@ use function Webify\Base\Infrastructure\set_alias;
  * modules and required dependencies. It extends the BaseWebBootstrapService
  * and implements the RegisterDependencyBootstrapInterface.
  */
-final class WebBootstrapService extends BaseWebBootstrapService
-    implements RegisterDependencyBootstrapInterface, RegisterRoutesBootstrapInterface
+final class WebBootstrapService extends BaseWebBootstrapService implements RegisterDependencyBootstrapInterface, RegisterRoutesBootstrapInterface
 {
-    public function __construct(
-        DependencyServiceInterface                                                                   $dependencyService,
-        ApplicationServiceInterface|WebApplicationServiceInterface|DomainApplicationServiceInterface $appService
-    )
-    {
-        set_alias('@User', '@Extensions/ext-user');
-        parent::__construct($dependencyService, $appService);
-    }
+	public function __construct(
+		DependencyServiceInterface $dependencyService,
+		ApplicationServiceInterface|DomainApplicationServiceInterface|WebApplicationServiceInterface $appService
+	) {
+		set_alias('@User', '@Extensions/ext-user');
+		parent::__construct($dependencyService, $appService);
+	}
 
-    /**
-     * @inheritDoc
-     */
-    public function init(): void
-    {
-        $this->getApplication()->getModule(administration_path())->setModule('user', [
-            'class' => UserModule::class,
-        ]);
-        $this->registerTranslations();
-    }
+	public function init(): void
+	{
+		$this->getApplication()->getModule(administration_path())->setModule('user', [
+			'class' => UserModule::class,
+		]);
+		$this->registerTranslations();
+	}
 
-    /**
-     * @inheritDoc
-     */
-    public function dependencies(): array
-    {
-        return include_once get_alias('@User/config/dependencies.php');
-    }
+	public function dependencies(): array
+	{
+		return include_once get_alias('@User/config/dependencies.php');
+	}
 
-    /**
-     * Register translations for user extension.
-     */
-    private function registerTranslations(): void
-    {
-        $this->getApplication()->i18n->translations['user*'] = [
-            'class' => 'yii\i18n\PhpMessageSource',
-            'sourceLanguage' => 'en-US',
-            'basePath' => '@User/resources/translations',
-        ];
-    }
+	public function routes(): array
+	{
+		return include_once get_alias('@User/config/routes.php');
+	}
 
-    /**
-     * @inheritDoc
-     */
-    public function routes(): array
-    {
-        return include_once get_alias('@User/config/routes.php');
-    }
+	/**
+	 * Register translations for user extension.
+	 */
+	private function registerTranslations(): void
+	{
+		$this->getApplication()->i18n->translations['user*'] = [
+			'class'          => 'yii\i18n\PhpMessageSource',
+			'sourceLanguage' => 'en-US',
+			'basePath'       => '@User/resources/translations',
+		];
+	}
 }

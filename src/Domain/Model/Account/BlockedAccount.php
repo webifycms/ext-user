@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -45,8 +46,7 @@ final class BlockedAccount extends Account
 		public readonly ?AccountPasswordHash $passwordHash,
 		private readonly \DateTimeInterface $activatedAt,
 		private readonly \DateTimeInterface $blockedAt
-	) {
-	}
+	) {}
 
 	/**
 	 * Returns the activated datetime as string for the given format.

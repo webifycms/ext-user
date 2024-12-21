@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -17,6 +18,4 @@ use Webify\Base\Domain\ValueObject\IpValueObject;
 /**
  * An value object represents account registered IP address.
  */
-final class AccountRegisteredIpValueObject extends IpValueObject
-{
-}
+final class AccountRegisteredIpValueObject extends IpValueObject {}

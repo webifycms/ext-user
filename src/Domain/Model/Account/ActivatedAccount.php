@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -44,8 +45,7 @@ final class ActivatedAccount extends Account
 		public readonly ?AccountPassword $password,
 		public readonly ?AccountPasswordHash $passwordHash,
 		private readonly \DateTimeInterface $activatedAt
-	) {
-	}
+	) {}
 
 	/**
 	 * Returns the activated datetime as string for the given format.

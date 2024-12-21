@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a78fd432075b2489e8d7125cd57c01f",
+    "content-hash": "4f5d3c73e3d56efe2e56f590162d82fe",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -1732,13 +1732,13 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "3.x-dev"
-                },
                 "phpstan": {
                     "includes": [
                         "extension.neon"
                     ]
+                },
+                "branch-alias": {
+                    "dev-main": "3.x-dev"
                 }
             },
             "autoload": {
@@ -2380,20 +2380,20 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.13",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "9b469068840cfa031e1deaf2fa1886d00e20680f"
+                "reference": "50d276fc3bf1430ec315f2f109bbde2769821524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9b469068840cfa031e1deaf2fa1886d00e20680f",
-                "reference": "9b469068840cfa031e1deaf2fa1886d00e20680f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/50d276fc3bf1430ec315f2f109bbde2769821524",
+                "reference": "50d276fc3bf1430ec315f2f109bbde2769821524",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2|^8.0"
+                "php": "^7.4|^8.0"
             },
             "conflict": {
                 "phpstan/phpstan-shim": "*"
@@ -2434,7 +2434,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-17T17:00:20+00:00"
+            "time": "2024-12-17T17:14:01+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3543,21 +3543,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "1.2.10",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "40f9cf38c05296bd32f444121336a521a293fa61"
+                "reference": "3f27091368bd935dbbaa8387099792fb20f65f68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/40f9cf38c05296bd32f444121336a521a293fa61",
-                "reference": "40f9cf38c05296bd32f444121336a521a293fa61",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/3f27091368bd935dbbaa8387099792fb20f65f68",
+                "reference": "3f27091368bd935dbbaa8387099792fb20f65f68",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.12.5"
+                "php": "^7.4|^8.0",
+                "phpstan/phpstan": "^2.0.1"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -3590,7 +3590,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/1.2.10"
+                "source": "https://github.com/rectorphp/rector/tree/2.0.3"
             },
             "funding": [
                 {
@@ -3598,7 +3598,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-08T13:59:10+00:00"
+            "time": "2024-12-12T15:22:19+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -5528,23 +5528,23 @@
         },
         {
             "name": "webifycms/dev-tools",
-            "version": "v0.7",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webifycms/dev-tools.git",
-                "reference": "49f35438cc4029b92597d453bfd99607dc5439c9"
+                "reference": "64a9c0559b47f428621f446b87131b06d571b0f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webifycms/dev-tools/zipball/49f35438cc4029b92597d453bfd99607dc5439c9",
-                "reference": "49f35438cc4029b92597d453bfd99607dc5439c9",
+                "url": "https://api.github.com/repos/webifycms/dev-tools/zipball/64a9c0559b47f428621f446b87131b06d571b0f8",
+                "reference": "64a9c0559b47f428621f446b87131b06d571b0f8",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "php": ">=8.1",
-                "phpstan/phpstan": "^1.10",
-                "rector/rector": "^1.0"
+                "phpstan/phpstan": "^2.0",
+                "rector/rector": "^2.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^10"
@@ -5567,11 +5567,14 @@
                 "code-format": [
                     "php-cs-fixer fix --verbose --show-progress=dots"
                 ],
-                "code-analyze": [
+                "code-analyse": [
                     "phpstan"
                 ],
                 "rector": [
-                    "rector"
+                    "rector process --dry-run"
+                ],
+                "rector-process": [
+                    "rector process"
                 ]
             },
             "authors": [
@@ -5582,10 +5585,10 @@
             ],
             "description": "Set of development tools to analyze and auto fix code standards, formatting and other stuffs for WebifyCMS packages.",
             "support": {
-                "source": "https://github.com/webifycms/dev-tools/tree/v0.7",
+                "source": "https://github.com/webifycms/dev-tools/tree/v1.0.1",
                 "issues": "https://github.com/webifycms/dev-tools/issues"
             },
-            "time": "2024-03-25T18:13:27+00:00"
+            "time": "2024-12-20T02:17:05+00:00"
         }
     ],
     "aliases": [],

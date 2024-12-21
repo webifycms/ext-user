@@ -9,3 +9,4 @@ parameters:
 		- test
 	excludePaths:
 		- vendor
+		- templates

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -15,6 +16,4 @@ namespace Webify\User\Domain\Model\Person\ValueObject;
 /**
  * @todo Should add the required address fields.
  */
-final class PersonAddress
-{
-}
+final class PersonAddress {}

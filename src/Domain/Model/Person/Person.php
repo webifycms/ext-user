@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -30,6 +31,5 @@ final class Person
 		public readonly PersonName $name,
 		public readonly PersonEmail $email,
 		public readonly PersonAddress $address
-	) {
-	}
+	) {}
 }

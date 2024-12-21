@@ -17,9 +17,7 @@ use Webify\User\Domain\ValueObject\PersonId;
  */
 final class Profile
 {
-	public function __construct(private readonly PersonId $userId, private readonly array $data)
-	{
-	}
+	public function __construct(private readonly PersonId $userId, private readonly array $data) {}
 
 	/**
 	 * Get the value of userId.

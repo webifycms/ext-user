@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -19,6 +20,7 @@ use Webify\Base\Infrastructure\Service\Application\ConsoleApplicationServiceInte
 use Webify\Base\Infrastructure\Service\Bootstrap\BaseConsoleBootstrapService;
 use Webify\Base\Infrastructure\Service\Bootstrap\RegisterControllersBootstrapInterface;
 use yii\console\controllers\MigrateController;
+
 use function Webify\Base\Infrastructure\set_alias;
 
 /**
@@ -28,36 +30,26 @@ use function Webify\Base\Infrastructure\set_alias;
  */
 final class ConsoleBootstrapService extends BaseConsoleBootstrapService implements RegisterControllersBootstrapInterface
 {
-    /**
-     * The class construct.
-     */
-    public function __construct(
-        DependencyServiceInterface $dependencyService,
-        ApplicationServiceInterface|DomainApplicationServiceInterface|ConsoleApplicationServiceInterface $appService
-    )
-    {
-        set_alias('@User', '@Extensions/ext-user');
-        parent::__construct($dependencyService, $appService);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function init(): void
-	{
-
+	/**
+	 * The class construct.
+	 */
+	public function __construct(
+		DependencyServiceInterface $dependencyService,
+		ApplicationServiceInterface|ConsoleApplicationServiceInterface|DomainApplicationServiceInterface $appService
+	) {
+		set_alias('@User', '@Extensions/ext-user');
+		parent::__construct($dependencyService, $appService);
 	}
 
-    /**
-     * @inheritDoc
-     */
-    public function controllers(): array
-    {
-        return [
-            'migrate-user' => [
-                'class'          => MigrateController::class,
-                'migrationPath'  => '@User/database/migrations',
-            ],
-        ];
-    }
+	public function init(): void {}
+
+	public function controllers(): array
+	{
+		return [
+			'migrate-user' => [
+				'class'          => MigrateController::class,
+				'migrationPath'  => '@User/database/migrations',
+			],
+		];
+	}
 }
