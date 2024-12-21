@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -36,8 +37,7 @@ abstract class Account
 		public readonly ?AccountRegisteredIpValueObject $registeredIp = null,
 		public readonly ?AccountPassword $password = null,
 		public readonly ?AccountPasswordHash $passwordHash = null
-	) {
-	}
+	) {}
 
 	/**
 	 * Returns the state of the account as string.

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -24,7 +25,7 @@ class UserModule extends Module
 
 	public $layout = 'main';
 
-	public $controllerNamespace = 'Webify\\User\\Infrastructure\\Presentation\\Admin\\Controller';
+	public $controllerNamespace = 'Webify\User\Infrastructure\Presentation\Admin\Controller';
 
 	public function init(): void
 	{

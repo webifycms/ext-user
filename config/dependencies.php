@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -13,6 +14,7 @@ declare(strict_types=1);
 use Webify\User\Domain\Service\HashServiceInterface;
 use Webify\User\Infrastructure\Service\Hash\HashService;
 use yii\di\Container;
+
 use function Webify\Base\Infrastructure\dependency;
 
 /**
@@ -21,5 +23,5 @@ use function Webify\Base\Infrastructure\dependency;
 $container = dependency()->getContainer();
 
 return [
-    HashServiceInterface::class => HashService::class,
+	HashServiceInterface::class => HashService::class,
 ];

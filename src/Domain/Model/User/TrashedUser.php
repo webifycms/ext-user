@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -22,8 +23,7 @@ final class TrashedUser
 	 */
 	public function __construct(
 		private readonly User $user
-	) {
-	}
+	) {}
 
 	/**
 	 * It returns the user's ID as string.

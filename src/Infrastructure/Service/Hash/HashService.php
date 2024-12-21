@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
  *
@@ -23,9 +24,7 @@ final class HashService implements HashServiceInterface
 	/**
 	 * The object constructor.
 	 */
-	public function __construct(private readonly Security $securityComponent)
-	{
-	}
+	public function __construct(private readonly Security $securityComponent) {}
 
 	public function generateHash(string $string): string
 	{
