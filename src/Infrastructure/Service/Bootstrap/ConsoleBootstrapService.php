@@ -36,7 +36,7 @@ final class ConsoleBootstrapService extends BaseConsoleBootstrapService implemen
         ApplicationServiceInterface|DomainApplicationServiceInterface|ConsoleApplicationServiceInterface $appService
     )
     {
-        set_alias('@User', \dirname(__DIR__));
+        set_alias('@User', '@Extensions/ext-user');
         parent::__construct($dependencyService, $appService);
     }
 

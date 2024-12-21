@@ -38,7 +38,7 @@ final class WebBootstrapService extends BaseWebBootstrapService
         ApplicationServiceInterface|WebApplicationServiceInterface|DomainApplicationServiceInterface $appService
     )
     {
-        set_alias('@User', \dirname(__DIR__));
+        set_alias('@User', '@Extensions/ext-user');
         parent::__construct($dependencyService, $appService);
     }
 
