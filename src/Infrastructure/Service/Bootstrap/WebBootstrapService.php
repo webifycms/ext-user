@@ -13,9 +13,7 @@ declare(strict_types=1);
 
 namespace Webify\User\Infrastructure\Service\Bootstrap;
 
-use Webify\Base\Domain\Service\Application\ApplicationServiceInterface as DomainApplicationServiceInterface;
 use Webify\Base\Domain\Service\Dependency\DependencyServiceInterface;
-use Webify\Base\Infrastructure\Service\Application\ApplicationServiceInterface;
 use Webify\Base\Infrastructure\Service\Application\WebApplicationServiceInterface;
 use Webify\Base\Infrastructure\Service\Bootstrap\BaseWebBootstrapService;
 use Webify\Base\Infrastructure\Service\Bootstrap\RegisterDependencyBootstrapInterface;
@@ -34,9 +32,11 @@ use function Webify\Base\Infrastructure\set_alias;
  */
 final class WebBootstrapService extends BaseWebBootstrapService implements RegisterDependencyBootstrapInterface, RegisterRoutesBootstrapInterface
 {
+	public const USER_MODULE_ID = 'user';
+
 	public function __construct(
 		DependencyServiceInterface $dependencyService,
-		ApplicationServiceInterface|DomainApplicationServiceInterface|WebApplicationServiceInterface $appService
+		WebApplicationServiceInterface $appService
 	) {
 		set_alias('@User', '@Extensions/ext-user');
 		parent::__construct($dependencyService, $appService);
@@ -44,9 +44,11 @@ final class WebBootstrapService extends BaseWebBootstrapService implements Regis
 
 	public function init(): void
 	{
-		$this->getApplication()->getModule(administration_path())->setModule('user', [
-			'class' => UserModule::class,
-		]);
+		$this->getApplication()->getModule(administration_path())?->setModule(
+			self::USER_MODULE_ID,
+			['class' => UserModule::class]
+		);
+
 		$this->registerTranslations();
 	}
 
@@ -61,7 +63,7 @@ final class WebBootstrapService extends BaseWebBootstrapService implements Regis
 	}
 
 	/**
-	 * Register translations for user extension.
+	 * Register translations for the user extension.
 	 */
 	private function registerTranslations(): void
 	{

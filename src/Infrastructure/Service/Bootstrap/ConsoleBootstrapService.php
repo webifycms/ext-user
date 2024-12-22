@@ -13,9 +13,7 @@ declare(strict_types=1);
 
 namespace Webify\User\Infrastructure\Service\Bootstrap;
 
-use Webify\Base\Domain\Service\Application\ApplicationServiceInterface as DomainApplicationServiceInterface;
 use Webify\Base\Domain\Service\Dependency\DependencyServiceInterface;
-use Webify\Base\Infrastructure\Service\Application\ApplicationServiceInterface;
 use Webify\Base\Infrastructure\Service\Application\ConsoleApplicationServiceInterface;
 use Webify\Base\Infrastructure\Service\Bootstrap\BaseConsoleBootstrapService;
 use Webify\Base\Infrastructure\Service\Bootstrap\RegisterControllersBootstrapInterface;
@@ -35,7 +33,7 @@ final class ConsoleBootstrapService extends BaseConsoleBootstrapService implemen
 	 */
 	public function __construct(
 		DependencyServiceInterface $dependencyService,
-		ApplicationServiceInterface|ConsoleApplicationServiceInterface|DomainApplicationServiceInterface $appService
+		ConsoleApplicationServiceInterface $appService
 	) {
 		set_alias('@User', '@Extensions/ext-user');
 		parent::__construct($dependencyService, $appService);
