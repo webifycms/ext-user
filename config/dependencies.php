@@ -23,5 +23,8 @@ use function Webify\Base\Infrastructure\dependency;
 $container = dependency()->getContainer();
 
 return [
-	HashServiceInterface::class => HashService::class,
+	'definitions' => [
+		HashServiceInterface::class => HashService::class,
+	],
+	'singletons' => [],
 ];
