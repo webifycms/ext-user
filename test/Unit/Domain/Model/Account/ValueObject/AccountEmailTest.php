@@ -46,6 +46,7 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCanBeCreatedWithValidEmailAddress(): void
 	{
+		// @phpstan-ignore-next-line
 		$this->validatorService->method('isValid')
 			->willReturn(true)
 		;
@@ -61,6 +62,7 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCannotBeCreatedWithInvalidEmailAddress(): void
 	{
+		// @phpstan-ignore-next-line
 		$this->validatorService->method('isValid')
 			->willReturn(false)
 		;
@@ -76,6 +78,7 @@ final class AccountEmailTest extends TestCase
 	 */
 	public function testCanBeUsedAsString(): void
 	{
+		// @phpstan-ignore-next-line
 		$this->validatorService->method('isValid')
 			->willReturn(true)
 		;

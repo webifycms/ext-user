@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace Webify\User\Infrastructure\Service\Hash;
 
+use Webify\Base\Domain\Exception\TranslatableRuntimeException;
 use Webify\User\Domain\Service\HashServiceInterface;
+use yii\base\Exception;
 use yii\base\Security;
 
 /**
@@ -26,9 +28,21 @@ final class HashService implements HashServiceInterface
 	 */
 	public function __construct(private readonly Security $securityComponent) {}
 
+	/**
+	 * @throws TranslatableRuntimeException
+	 */
 	public function generateHash(string $string): string
 	{
-		return $this->securityComponent->generatePasswordHash($string);
+		try {
+			return $this->securityComponent->generatePasswordHash($string);
+		} catch (Exception $e) {
+			throw new TranslatableRuntimeException(
+				'unable_to_generate_hash',
+				['string' => $string],
+				$e->getCode(),
+				$e
+			);
+		}
 	}
 
 	public function validatesHash(string $string, string $hash): bool

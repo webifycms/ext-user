@@ -14,6 +14,7 @@ declare(strict_types=1);
 use Webify\User\Domain\Service\HashServiceInterface;
 use Webify\User\Infrastructure\Service\Hash\HashService;
 use yii\di\Container;
+use yii\web\Application;
 
 use function Webify\Base\Infrastructure\dependency;
 
@@ -24,7 +25,7 @@ $container = dependency()->getContainer();
 
 return [
 	'definitions' => [
-		HashServiceInterface::class => HashService::class,
+		HashServiceInterface::class => fn (Application $app) => new HashService($app->getSecurity()),
 	],
 	'singletons' => [],
 ];

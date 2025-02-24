@@ -20,6 +20,8 @@ interface AccountFactoryInterface
 	 * passwordHash
 	 * validationToken
 	 * activation
+	 *
+	 * @param array<string, mixed> $args
 	 */
 	public function build(array $args): Account;
 }

@@ -13,42 +13,49 @@ declare(strict_types=1);
 
 namespace Webify\User\Infrastructure\Service\Bootstrap;
 
+use Webify\Base\Domain\Service\Application\ApplicationServiceInterface;
 use Webify\Base\Domain\Service\Config\ConfigServiceInterface;
+use Webify\Base\Domain\Service\Dependency\DependencyServiceInterface;
 use Webify\Base\Infrastructure\Service\Application\WebApplicationServiceInterface;
 use Webify\Base\Infrastructure\Service\Bootstrap\BaseWebBootstrapService;
-use Webify\Base\Infrastructure\Service\Bootstrap\RegisterDependencyBootstrapInterface;
-use Webify\Base\Infrastructure\Service\Bootstrap\RegisterRoutesBootstrapInterface;
-use Webify\User\Infrastructure\UserModule;
+use Webify\Base\Infrastructure\Service\Bootstrap\RegisterAdminRoutesBootstrapInterface;
+use Webify\Base\Infrastructure\Service\Bootstrap\RegisterControllerNamespaceBootstrapInterface;
+use Webify\Base\Infrastructure\Service\Bootstrap\RegisterDependenciesBootstrapInterface;
+use yii\i18n\PhpMessageSource;
 
 use function Webify\Base\Infrastructure\get_alias;
 use function Webify\Base\Infrastructure\set_alias;
 
 /**
- * WebBootstrapService is responsible for initializing and setting up
- * the bootstrap process for the web application, including registering
- * modules and required dependencies. It extends the BaseWebBootstrapService
- * and implements the RegisterDependencyBootstrapInterface.
+ * WebBootstrapService is responsible for initializing and setting up the bootstrap process for the web application,
+ * including registering required dependencies, routes and controllers.
  */
-final class WebBootstrapService extends BaseWebBootstrapService implements RegisterDependencyBootstrapInterface, RegisterRoutesBootstrapInterface
+final class WebBootstrapService extends BaseWebBootstrapService implements RegisterDependenciesBootstrapInterface, RegisterAdminRoutesBootstrapInterface, RegisterControllerNamespaceBootstrapInterface
 {
-	public const USER_MODULE_ID = 'user';
+	/**
+	 * The extension templates path.
+	 */
+	public const TEMPLATES_PATH = '@User/templates';
 
 	public function __construct(
+		DependencyServiceInterface $dependencyService,
 		ConfigServiceInterface $configService,
-		WebApplicationServiceInterface $webApplicationService,
 	) {
 		set_alias('@User', '@Extensions/ext-user');
-		parent::__construct($configService, $webApplicationService);
+
+		parent::__construct($dependencyService, $configService);
 	}
 
-	public function init(): void
+	public function bootstrap(ApplicationServiceInterface $appService): void
 	{
-		$this->getApplication()->getModule($this->getAdministrationPath())?->setModule(
-			self::USER_MODULE_ID,
-			['class' => UserModule::class]
-		);
-
-		$this->registerTranslations();
+		if ($appService instanceof WebApplicationServiceInterface) {
+			// register translations for the user extension.
+			$appService->getApplication()->i18n->translations['user*'] = [
+				'class'          => PhpMessageSource::class,
+				'sourceLanguage' => 'en-US',
+				'basePath'       => '@User/resources/translations',
+			];
+		}
 	}
 
 	public function dependencies(): array
@@ -56,20 +63,17 @@ final class WebBootstrapService extends BaseWebBootstrapService implements Regis
 		return require get_alias('@User/config/dependencies.php');
 	}
 
-	public function routes(): array
+	public function adminRoutes(): array
 	{
-		return require get_alias('@User/config/routes.php');
+		return require get_alias('@User/config/admin/routes.php');
 	}
 
-	/**
-	 * Register translations for the user extension.
-	 */
-	private function registerTranslations(): void
+	public function controllerNamespaces(): array
 	{
-		$this->getApplication()->i18n->translations['user*'] = [
-			'class'          => 'yii\i18n\PhpMessageSource',
-			'sourceLanguage' => 'en-US',
-			'basePath'       => '@User/resources/translations',
+		return [
+			'Webify\User\Infrastructure\Presentation\Web\Controller',
+			'Webify\User\Infrastructure\Presentation\Api\Controller',
+			'Webify\User\Infrastructure\Presentation\Web\Controller\Admin',
 		];
 	}
 }

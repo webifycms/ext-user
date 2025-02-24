@@ -70,6 +70,14 @@ final class AccountUsername
 	 */
 	private function isValid(string $username): bool
 	{
-		return preg_match('/^(?!.*[_]{2})(?=.*[a-z0-9]$)[a-z0-9][a-z0-9_]{' . self::MIN_LENGTH . ',}$/i', $username);
+		if (!preg_match(
+			'/^(?!.*[_]{2})(?=.*[a-z0-9]$)[a-z0-9][a-z0-9_]{' . self::MIN_LENGTH . ',}$/i',
+			$username
+		)
+		) {
+			return false;
+		}
+
+		return true;
 	}
 }
