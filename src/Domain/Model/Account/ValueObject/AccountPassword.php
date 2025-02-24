@@ -21,7 +21,7 @@ use Webify\User\Domain\Model\Account\Exception\InvalidPasswordException;
 final class AccountPassword
 {
 	/**
-	 * Minimum characters length.
+	 * Minimum characters' length.
 	 */
 	private const MIN_LENGTH = 12;
 
@@ -67,6 +67,14 @@ final class AccountPassword
 	 */
 	private function isValid(string $password): bool
 	{
-		return preg_match('/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{' . self::MIN_LENGTH . ',})/', $password);
+		if (!preg_match(
+			'/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{' . self::MIN_LENGTH . ',})/',
+			$password
+		)
+		) {
+			return false;
+		}
+
+		return true;
 	}
 }

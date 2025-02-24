@@ -46,11 +46,14 @@ final class User implements RecyclableModelInterface
 	 */
 	public function activateAccount(): void
 	{
-		if ($this->account instanceof PendingAccount) {
-			$this->account = $this->account->activate();
+		if (!$this->account instanceof PendingAccount) {
+			throw new TranslatableRuntimeException(
+				'unable_to_activate',
+				null !== $this->account ? ['status' => $this->account->getStatus()] : []
+			);
 		}
 
-		throw new TranslatableRuntimeException('unable_to_activate', ['status' => $this->account->getStatus()]);
+		$this->account = $this->account->activate();
 	}
 
 	/**
@@ -59,11 +62,14 @@ final class User implements RecyclableModelInterface
 	 */
 	public function blockAccount(): void
 	{
-		if ($this->account instanceof ActivatedAccount) {
-			$this->account = $this->account->block();
+		if (!$this->account instanceof ActivatedAccount) {
+			throw new TranslatableRuntimeException(
+				'unable_to_block',
+				null !== $this->account ? ['status' => $this->account->getStatus()] : []
+			);
 		}
 
-		throw new TranslatableRuntimeException('unable_to_block', ['status' => $this->account->getStatus()]);
+		$this->account = $this->account->block();
 	}
 
 	/**
@@ -72,11 +78,14 @@ final class User implements RecyclableModelInterface
 	 */
 	public function unblockAccount(): void
 	{
-		if ($this->account instanceof BlockedAccount) {
-			$this->account = $this->account->unblock();
+		if (!$this->account instanceof BlockedAccount) {
+			throw new TranslatableRuntimeException(
+				'unable_to_unblock',
+				null !== $this->account ? ['status' => $this->account->getStatus()] : []
+			);
 		}
 
-		throw new TranslatableRuntimeException('unable_to_unblock', ['status' => $this->account->getStatus()]);
+		$this->account = $this->account->unblock();
 	}
 
 	/**
@@ -94,11 +103,11 @@ final class User implements RecyclableModelInterface
 	 */
 	public function restoreFromTrash(): void
 	{
-		if ($this->isInTrash()) {
-			$this->trashedAt = null;
+		if (!$this->isInTrash()) {
+			throw new TranslatableRuntimeException('user_not_in_trash', []);
 		}
 
-		throw new TranslatableRuntimeException('user_not_in_trash', []);
+		$this->trashedAt = null;
 	}
 
 	public function isInTrash(): bool
@@ -108,10 +117,6 @@ final class User implements RecyclableModelInterface
 
 	public function getTrashedAt(string $format): ?string
 	{
-		if ($this->isInTrash()) {
-			return $this->trashedAt->format($format);
-		}
-
-		return null;
+		return $this->trashedAt?->format($format);
 	}
 }
