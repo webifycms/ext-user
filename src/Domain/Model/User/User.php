@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Webify\User\Domain\Model\User;
 
+use DateTimeInterface;
 use Webify\Base\Domain\Exception\TranslatableRuntimeException;
 use Webify\Base\Domain\Model\RecyclableModelInterface;
 use Webify\Base\Domain\ValueObject\DateTimeValueObject;
@@ -37,7 +38,7 @@ final class User implements RecyclableModelInterface
 		public readonly UserUniqueIdValueObject $uid,
 		public Person $person,
 		public ?Account $account = null,
-		private ?\DateTimeInterface $trashedAt = null
+		private ?DateTimeInterface $trashedAt = null
 	) {}
 
 	/**
@@ -112,7 +113,7 @@ final class User implements RecyclableModelInterface
 
 	public function isInTrash(): bool
 	{
-		return $this->trashedAt instanceof \DateTimeInterface;
+		return $this->trashedAt instanceof DateTimeInterface;
 	}
 
 	public function getTrashedAt(string $format): ?string

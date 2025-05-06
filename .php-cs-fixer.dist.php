@@ -27,8 +27,20 @@ $finder = Finder::create()
 	->ignoreDotFiles(false)
 	->name('*.php')
 ;
+$rules = [
+	'echo_tag_syntax' => [
+		'format'                         => 'short',
+		'shorten_simple_statements_only' => false,
+	],
+	'phpdoc_to_comment'       => false,
+	'global_namespace_import' => [
+		'import_classes'   => true,
+		'import_constants' => false,
+		'import_functions' => true,
+	],
+];
 
-return (new Fixer($finder))
+return (new Fixer($finder, $rules))
 	->getConfig()
 	->setUsingCache(false)
 ;

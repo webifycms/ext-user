@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Webify\User\Domain\Model\Account;
 
+use DateTimeInterface;
 use Webify\User\Domain\Model\Account\Factory\BlockedAccountFactory;
 use Webify\User\Domain\Model\Account\ValueObject\AccountActivationHashValueObject;
 use Webify\User\Domain\Model\Account\ValueObject\AccountEmail;
@@ -44,7 +45,7 @@ final class ActivatedAccount extends Account
 		public readonly ?AccountRegisteredIpValueObject $registeredIp,
 		public readonly ?AccountPassword $password,
 		public readonly ?AccountPasswordHash $passwordHash,
-		private readonly \DateTimeInterface $activatedAt
+		private readonly DateTimeInterface $activatedAt
 	) {}
 
 	/**
