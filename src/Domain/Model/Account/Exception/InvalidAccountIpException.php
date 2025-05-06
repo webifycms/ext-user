@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Webify\User\Domain\Model\Account\Exception;
 
+use Throwable;
 use Webify\Base\Domain\Exception\TranslatableInvalidArgumentException;
 
 /**
@@ -29,7 +30,7 @@ final class InvalidAccountIpException extends TranslatableInvalidArgumentExcepti
 		string $messageKey = self::MESSAGE_KEY,
 		array $params = [],
 		$code = null,
-		?\Throwable $previous = null
+		?Throwable $previous = null
 	) {
 		parent::__construct($messageKey, $params, $code, $previous);
 	}
