@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f5d3c73e3d56efe2e56f590162d82fe",
+    "content-hash": "b19a745cdd90c8fc661daf0650b0d3cf",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -1182,27 +1182,20 @@
         },
         {
             "name": "webifycms/ext-admin",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webifycms/ext-admin.git",
-                "reference": "b96353d813ecb9a798fd9f87519c3fe97eb92537"
-            },
+            "version": "dev-local",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webifycms/ext-admin/zipball/b96353d813ecb9a798fd9f87519c3fe97eb92537",
-                "reference": "b96353d813ecb9a798fd9f87519c3fe97eb92537",
-                "shasum": ""
+                "type": "path",
+                "url": "../ext-admin",
+                "reference": "43c16d673dd27f5987b0f405d98dbe02d1262c4e"
             },
             "require": {
                 "php": ">=8.1",
-                "webifycms/ext-base": "dev-main"
+                "webifycms/ext-base": "*"
             },
             "require-dev": {
                 "phpunit/phpunit": "^10",
                 "webifycms/dev-tools": "^1.0"
             },
-            "default-branch": true,
             "type": "webifycms-extension",
             "autoload": {
                 "psr-4": {
@@ -1235,25 +1228,17 @@
                 }
             ],
             "description": "The WebifyCMS admin extension provides basic administration features of the application and includes an API for other extensions to use.",
-            "support": {
-                "source": "https://github.com/webifycms/ext-admin/tree/main",
-                "issues": "https://github.com/webifycms/ext-admin/issues"
-            },
-            "time": "2025-05-06T18:20:49+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "webifycms/ext-base",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webifycms/ext-base.git",
-                "reference": "3717c6210b5767d7f7a70849dee4223f6b9df3b1"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webifycms/ext-base/zipball/3717c6210b5767d7f7a70849dee4223f6b9df3b1",
-                "reference": "3717c6210b5767d7f7a70849dee4223f6b9df3b1",
-                "shasum": ""
+                "type": "path",
+                "url": "../ext-base",
+                "reference": "3717c6210b5767d7f7a70849dee4223f6b9df3b1"
             },
             "require": {
                 "php": ">=8.1",
@@ -1265,7 +1250,6 @@
                 "phpunit/phpunit": "^10",
                 "webifycms/dev-tools": "^1.0"
             },
-            "default-branch": true,
             "type": "webifycms-extension",
             "autoload": {
                 "psr-4": {
@@ -1301,11 +1285,9 @@
                 }
             ],
             "description": "The WebifyCMS base extension serves as the foundation for the entire application, holding abstractions and reusable components.",
-            "support": {
-                "source": "https://github.com/webifycms/ext-base/tree/main",
-                "issues": "https://github.com/webifycms/ext-base/issues"
-            },
-            "time": "2025-05-06T17:40:44+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "yiisoft/yii2",
@@ -5548,10 +5530,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "webifycms/ext-base": 20,
-        "webifycms/ext-admin": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

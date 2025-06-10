@@ -5,7 +5,7 @@
  *
  * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 WebifyCMS
+ * @copyright Copyright (c) 2023 WebifyCMS
  * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
@@ -27,6 +27,15 @@ $finder = Finder::create()
 	->ignoreDotFiles(false)
 	->name('*.php')
 ;
+$header = <<<'HEADER'
+	The file is part of the "webifycms/ext-user", WebifyCMS extension package.
+
+	@see https://webifycms.com/extension/user
+
+	@copyright Copyright (c) 2023 WebifyCMS
+	@license https://webifycms.com/extension/user/license
+	@author Mohammed Shifreen <mshifreen@gmail.com>
+	HEADER;
 $rules = [
 	'echo_tag_syntax' => [
 		'format'                         => 'short',
@@ -37,6 +46,15 @@ $rules = [
 		'import_classes'   => true,
 		'import_constants' => false,
 		'import_functions' => true,
+	],
+	'header_comment' => [
+		'header'       => $header,
+		'location'     => 'after_open',
+		'comment_type' => 'PHPDoc',
+		'separate'     => 'top',
+	],
+	'no_alternative_syntax' => [
+		'fix_non_monolithic_code' => false,
 	],
 ];
 
