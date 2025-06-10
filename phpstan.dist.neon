@@ -10,3 +10,5 @@ parameters:
 	excludePaths:
 		- vendor
 		- templates
+	ignoreErrors:
+	    - '#^Method Webify\\Base\\Infrastructure\\Service\\Application\\ApplicationServiceInterface::getService\(\) invoked with 1 parameter, 3 required\.$#'

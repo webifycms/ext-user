@@ -5,7 +5,7 @@
  *
  * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 WebifyCMS
+ * @copyright Copyright (c) 2023 WebifyCMS
  * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
@@ -13,19 +13,12 @@ declare(strict_types=1);
 
 use Webify\User\Domain\Service\HashServiceInterface;
 use Webify\User\Infrastructure\Service\Hash\HashService;
-use yii\di\Container;
-use yii\web\Application;
 
-use function Webify\Base\Infrastructure\dependency;
-
-/**
- * @var Container $container
- */
-$container = dependency()->getContainer();
+use function Webify\Base\Infrastructure\app;
 
 return [
 	'definitions' => [
-		HashServiceInterface::class => fn (Application $app) => new HashService($app->getSecurity()),
+		HashServiceInterface::class => fn () => new HashService(app()->getSecurity()),
 	],
 	'singletons' => [],
 ];

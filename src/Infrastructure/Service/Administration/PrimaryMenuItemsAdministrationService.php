@@ -5,38 +5,35 @@
  *
  * @see https://webifycms.com/extension/user
  *
- * @license Copyright (c) 2022 WebifyCMS
+ * @copyright Copyright (c) 2023 WebifyCMS
  * @license https://webifycms.com/extension/user/license
  * @author Mohammed Shifreen <mshifreen@gmail.com>
  */
 declare(strict_types=1);
 
-namespace Webify\User\Infrastructure\Service\Menu;
+namespace Webify\User\Infrastructure\Service\Administration;
 
-use Webify\Admin\Infrastructure\Service\Menu\PrimaryMenuItemServiceInterface;
+use Webify\Base\Infrastructure\Service\Administration\PrimaryMenuItemsAdministrationServiceInterface;
 
 use function Webify\Base\Infrastructure\administration_url;
 use function Webify\Base\Infrastructure\url;
 
-/**
- * Service class to register primary menu items for the user extension.
- */
-final class PrimaryMenuItemService implements PrimaryMenuItemServiceInterface
+final class PrimaryMenuItemsAdministrationService implements PrimaryMenuItemsAdministrationServiceInterface
 {
-	public function __construct(private readonly string $assetsBaseUrl) {}
+	public function __construct(private readonly string $assetsUrl) {}
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * TODO: Currently the Menu widget does not support img tag for icon, should replaced when the request is merged.
 	 */
-	public function items(): array
+	public function getItems(): array
 	{
 		return [
 			[
 				'label'     => sprintf(
 					'<img src="%s" alt="%s"><div>User Management</div>',
-					url($this->assetsBaseUrl . '/icons/user.svg'),
+					url($this->assetsUrl . '/icons/user.svg'),
 					'User Management'
 				),
 				'encode'    => false,
