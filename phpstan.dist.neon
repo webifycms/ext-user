@@ -1,0 +1,32 @@
+# The file is part of the "webifycms/ext-user", WebifyCMS development tools.
+#
+# @see https://webifycms.com/extenion/user
+#
+# @license Copyright (c) 2023 - Present WebifyCMS
+# @license https://webifycms.com/license
+# @author Mohammed Shifreen <mshifreen@gmail.com>
+
+includes:
+	- vendor/webifycms/dev-tools/phpstan-default.neon
+
+parameters:
+	paths:
+		- src
+		- test
+	excludePaths:
+		- vendor
+	reportUnmatchedIgnoredErrors: false
+
+services:
+	-
+		class: Webify\User\Test\Architecture\AuthenticationSpecification
+		tags:
+			- phpat.test
+	-
+		class: Webify\User\Test\Architecture\AuthorizationSpecification
+		tags:
+			- phpat.test
+	-
+		class: Webify\User\Test\Architecture\IdentitySpecification
+		tags:
+			- phpat.test
