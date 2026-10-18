@@ -19,11 +19,10 @@ use PHPat\Test\Builder\Rule;
 use PHPat\Test\PHPat;
 
 /**
- * Architecture tests that enforce DDD and clean architecture principles.
+ * Architecture tests for the Authentication context.
  *
  * Domain is the innermost layer — it must not know about Application or Infrastructure.
  * Application sits between Domain and Infrastructure.
- * Contract is a shared kernel that can be referenced by all layers.
  * Infrastructure implements Domain interfaces (Dependency Inversion).
  *
  * @internal
@@ -32,50 +31,39 @@ final class AuthenticationSpecification
 {
 	/**
 	 * Domain classes must not depend on Application or Infrastructure.
-	 * Dependency on Contract (shared kernel) is permitted.
+	 *
+	 * The authentication strategies (`PasswordBase`, `ChallengeBase`,
+	 * `ChallengeCodeStrategy`, `ChallengeTokenStrategy`) live in `Authentication\Application`
+	 * precisely because they orchestrate use cases; keeping them here would invert the
+	 * dependency direction.
 	 */
 	public function testDomainDoesNotDependOnApplicationOrInfrastructure(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Authentication\Authentication\Domain'))
+			->classes(Selector::inNamespace('Webify\User\Context\Authentication\Domain'))
 			->shouldNot()
 			->dependOn()
 			->classes(
-				Selector::inNamespace('Webify\User\Authentication\Application'),
-				Selector::inNamespace('Webify\User\Authentication\Infrastructure'),
+				Selector::inNamespace('Webify\User\Context\Authentication\Application'),
+				Selector::inNamespace('Webify\User\Context\Authentication\Infrastructure'),
 			)
 			->because('Domain is the innermost layer and must not depend on outer layers')
 		;
 	}
 
 	/**
-	 * Contract must not depend on Application or Infrastructure.
-	 * It may reference Domain types.
-	 */
-	public function testContractDoesNotDependOnApplicationOrInfrastructure(): Rule
-	{
-		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Authentication\Contract'))
-			->shouldNot()
-			->dependOn()
-			->classes(
-				Selector::inNamespace('Webify\User\Authentication\Application'),
-				Selector::inNamespace('Webify\User\Authentication\Infrastructure'),
-			)
-			->because('Contract must not depend on outer layers')
-		;
-	}
-
-	/**
 	 * Application classes must not depend on Infrastructure classes.
+	 *
+	 * NOTE: live today — `Authentication\Application\Query`, `Application\Service` and
+	 * `Application\Strategy` are populated, so a violation here fails `composer analyse`.
 	 */
 	public function testApplicationDoesNotDependOnInfrastructure(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Authentication\Application'))
+			->classes(Selector::inNamespace('Webify\User\Context\Authentication\Application'))
 			->shouldNot()
 			->dependOn()
-			->classes(Selector::inNamespace('Webify\User\Authentication\Infrastructure'))
+			->classes(Selector::inNamespace('Webify\User\Context\Authentication\Infrastructure'))
 			->because('Application should not depend on Infrastructure details')
 		;
 	}
@@ -86,7 +74,7 @@ final class AuthenticationSpecification
 	public function testDomainExceptionsExtendException(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Authentication\Domain\Exception'))
+			->classes(Selector::inNamespace('Webify\User\Context\Authentication\Domain\Exception'))
 			->should()
 			->extend()
 			->classes(Selector::classname(Exception::class))
@@ -100,7 +88,7 @@ final class AuthenticationSpecification
 	public function testInfrastructureExceptionsExtendException(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Authentication\Infrastructure\Exception'))
+			->classes(Selector::inNamespace('Webify\User\Context\Authentication\Infrastructure\Exception'))
 			->should()
 			->extend()
 			->classes(Selector::classname(Exception::class))

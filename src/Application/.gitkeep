@@ -1,0 +1,9 @@
+# The top-level `Application` layer is reserved for cross-context use cases.
+#
+# Nothing lives here yet by design: cross-context transactions (for example a use case that
+# registers a user and then opens a session) have not emerged. Add use cases under
+# `src/Application/{Part}/` as they do.
+#
+# This directory is referenced by `DomainSpecification`, which forbids the shared
+# kernel in `src/Domain` from depending on it. It is a guarded empty namespace, not a
+# forgotten one.

@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
+ *
+ * @see https://webifycms.com/extension/user
+ *
+ * @copyright Copyright (c) 2023 - Present WebifyCMS
+ * @license https://webifycms.com/license
+ * @author Mohammed Shifreen <mshifreen@gmail.com>
+ */
+declare(strict_types=1);
+
+namespace Webify\User\Context\Authorization\Domain\Repository;
+
+use Webify\User\Context\Authorization\Domain\Entity\Role;
+use Webify\User\Context\Authorization\Domain\Exception\RoleNotFoundException;
+use Webify\User\Context\Authorization\Domain\ValueObject\{RoleId, RoleSlug};
+
+/**
+ * RoleRepositoryInterface defines the contract for a role repository.
+ */
+interface RoleRepositoryInterface
+{
+	/**
+	 * Retrieves a Role entity by its ID.
+	 *
+	 * @throws RoleNotFoundException if the role with the given ID is not found
+	 */
+	public function getById(RoleId $id): Role;
+
+	/**
+	 * Retrieves a Role entity by its slug.
+	 *
+	 * @throws RoleNotFoundException if the role with the given slug is not found
+	 */
+	public function getBySlug(RoleSlug $slug): Role;
+
+	/**
+	 * Checks if a role with the given slug exists.
+	 */
+	public function isExist(RoleSlug $slug): bool;
+
+	/**
+	 * Persists the given Role entity to the data store.
+	 */
+	public function persist(Role $role): void;
+}

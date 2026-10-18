@@ -10,6 +10,8 @@ Thumbs.db
 # composer
 /vendor/
 composer.phar
+composer.local.json
+composer.local.lock
 
 # Mac DS_Store Files
 .DS_Store

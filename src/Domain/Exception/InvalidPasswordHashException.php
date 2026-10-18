@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * The file is part of the "webifycms/ext-user", WebifyCMS extension package.
+ *
+ * @see https://webifycms.com/extension/user
+ *
+ * @copyright Copyright (c) 2023 - Present WebifyCMS
+ * @license https://webifycms.com/license
+ * @author Mohammed Shifreen <mshifreen@gmail.com>
+ */
+declare(strict_types=1);
+
+namespace Webify\User\Domain\Exception;
+
+use InvalidArgumentException;
+use Webify\Base\Contract\Exception\TranslatableExceptionInterface;
+use Webify\Base\Contract\Translation\ExceptionTranslation;
+
+/**
+ * Exception thrown when an invalid password hash value is encountered.
+ *
+ * This exception belongs to the shared kernel because `PasswordHash` is shared by every context.
+ */
+final class InvalidPasswordHashException extends InvalidArgumentException implements TranslatableExceptionInterface
+{
+	/**
+	 * Private constructor enforces the use of the factory methods to initiate this exception.
+	 *
+	 * @param ExceptionTranslation $translation the translation object for this exception
+	 * @param string               $message     the exception message (optional)
+	 */
+	private function __construct(
+		public readonly ExceptionTranslation $translation,
+		string $message = ''
+	) {
+		parent::__construct($message);
+	}
+
+	/**
+	 * Factory method to initiate an InvalidPasswordHashException with a default message.
+	 *
+	 * @param string $hash the invalid password hash value
+	 */
+	public static function forInvalidPasswordHash(string $hash): self
+	{
+		return new self(
+			new ExceptionTranslation(
+				'user.identity',
+				'invalid_password_hash',
+				['hash' => $hash]
+			),
+			sprintf('Invalid password hash: "%s"', $hash)
+		);
+	}
+}

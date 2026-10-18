@@ -19,11 +19,10 @@ use PHPat\Test\Builder\Rule;
 use PHPat\Test\PHPat;
 
 /**
- * Architecture tests that enforce DDD and clean architecture principles.
+ * Architecture tests for the Identity context.
  *
  * Domain is the innermost layer — it must not know about Application or Infrastructure.
  * Application sits between Domain and Infrastructure.
- * Contract is a shared kernel that can be referenced by all layers.
  * Infrastructure implements Domain interfaces (Dependency Inversion).
  *
  * @internal
@@ -32,50 +31,37 @@ final class IdentitySpecification
 {
 	/**
 	 * Domain classes must not depend on Application or Infrastructure.
-	 * Dependency on Contract (shared kernel) is permitted.
+	 *
+	 * Anything in `Identity\Domain` that orchestrates repositories, hashers, ID generators
+	 * or event publishers is a use case and belongs in `Identity\Application` instead.
 	 */
 	public function testDomainDoesNotDependOnApplicationOrInfrastructure(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Identity\Identity\Domain'))
+			->classes(Selector::inNamespace('Webify\User\Context\Identity\Domain'))
 			->shouldNot()
 			->dependOn()
 			->classes(
-				Selector::inNamespace('Webify\User\Identity\Application'),
-				Selector::inNamespace('Webify\User\Identity\Infrastructure'),
+				Selector::inNamespace('Webify\User\Context\Identity\Application'),
+				Selector::inNamespace('Webify\User\Context\Identity\Infrastructure'),
 			)
 			->because('Domain is the innermost layer and must not depend on outer layers')
 		;
 	}
 
 	/**
-	 * Contract must not depend on Application or Infrastructure.
-	 * It may reference Domain types.
-	 */
-	public function testContractDoesNotDependOnApplicationOrInfrastructure(): Rule
-	{
-		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Identity\Contract'))
-			->shouldNot()
-			->dependOn()
-			->classes(
-				Selector::inNamespace('Webify\User\Identity\Application'),
-				Selector::inNamespace('Webify\User\Identity\Infrastructure'),
-			)
-			->because('Contract must not depend on outer layers')
-		;
-	}
-
-	/**
 	 * Application classes must not depend on Infrastructure classes.
+	 *
+	 * NOTE: live today — `Identity\Application\Query` and `Identity\Application\Service` are
+	 * populated, so a violation here fails `composer analyse`.
 	 */
 	public function testApplicationDoesNotDependOnInfrastructure(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Identity\Application'))
+			->classes(Selector::inNamespace('Webify\User\Context\Identity\Application'))
 			->shouldNot()
 			->dependOn()
-			->classes(Selector::inNamespace('Webify\User\Identity\Infrastructure'))
+			->classes(Selector::inNamespace('Webify\User\Context\Identity\Infrastructure'))
 			->because('Application should not depend on Infrastructure details')
 		;
 	}
@@ -86,7 +72,7 @@ final class IdentitySpecification
 	public function testDomainExceptionsExtendException(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Identity\Domain\Exception'))
+			->classes(Selector::inNamespace('Webify\User\Context\Identity\Domain\Exception'))
 			->should()
 			->extend()
 			->classes(Selector::classname(Exception::class))
@@ -100,7 +86,7 @@ final class IdentitySpecification
 	public function testInfrastructureExceptionsExtendException(): Rule
 	{
 		return PHPat::rule()
-			->classes(Selector::inNamespace('Webify\User\Identity\Infrastructure\Exception'))
+			->classes(Selector::inNamespace('Webify\User\Context\Identity\Infrastructure\Exception'))
 			->should()
 			->extend()
 			->classes(Selector::classname(Exception::class))
