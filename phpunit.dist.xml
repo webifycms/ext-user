@@ -3,7 +3,6 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          cacheDirectory=".phpunit.cache"
-         executionOrder="depends,defects"
          requireCoverageMetadata="true"
          beStrictAboutCoverageMetadata="true"
          beStrictAboutOutputDuringTests="true"
@@ -16,16 +15,24 @@
          testdox="true"
 >
     <testsuites>
+        <testsuite name="shared-kernel">
+            <directory>test/Unit/Domain</directory>
+        </testsuite>
+
         <testsuite name="authentication">
-            <directory>test/User/Authentication</directory>
+            <directory>test/Unit/Context/Authentication</directory>
         </testsuite>
 
         <testsuite name="authorization">
-            <directory>test/User/Authorization</directory>
+            <directory>test/Unit/Context/Authorization</directory>
         </testsuite>
 
         <testsuite name="identity">
-            <directory>test/User/Identity</directory>
+            <directory>test/Unit/Context/Identity</directory>
+        </testsuite>
+
+        <testsuite name="infrastructure">
+            <directory>test/Unit/Infrastructure</directory>
         </testsuite>
     </testsuites>
 

@@ -8,8 +8,10 @@
 
 includes:
 	- vendor/webifycms/dev-tools/phpstan-default.neon
+	- vendor/phpat/phpat/extension.neon
 
 parameters:
+	level: 10
 	paths:
 		- src
 		- test
@@ -18,6 +20,10 @@ parameters:
 	reportUnmatchedIgnoredErrors: false
 
 services:
+	-
+		class: Webify\User\Test\Architecture\DomainSpecification
+		tags:
+			- phpat.test
 	-
 		class: Webify\User\Test\Architecture\AuthenticationSpecification
 		tags:

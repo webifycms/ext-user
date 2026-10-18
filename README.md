@@ -2,7 +2,6 @@
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.4%2B-blue)](https://www.php.net)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.1.0--alpha-orange)](https://github.com/webifycms/ext-base)
 [![Type](https://img.shields.io/badge/type-extension-green)]()
 
 > 👋 Hey there! We're still in the early stage of development, so you may not find all the features just yet.
